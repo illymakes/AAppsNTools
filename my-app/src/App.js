@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import React, { useState, useEffect } from 'react';
 import Tile from './components/Tile';
@@ -6,7 +5,7 @@ import Filter from './components/Filter';
 
 const App = () => {
   const [tiles, setTiles] = useState([]);
-  const [filter, setFilter] = useState('All');
+  const [selectedFilters, setSelectedFilters] = useState({ 'All': true });
   const categories = ['Books', 'Movies', 'Video Games'];
 
   useEffect(() => {
@@ -28,19 +27,26 @@ const App = () => {
   }, []);
 
   const handleFilterChange = (category) => {
-    setFilter(category);
+    setSelectedFilters(filters);
   };
+
+  const filteredTiles =
+    tiles.filter(tile => selectedFilters[tile.category] || Object.values(selectedFilters).every(v => !v))
+      .map(tile => (
+        <Tile
+          key={`${tile.category}-${tile.id}`}
+          {...tile}
+        />
+      ));
 
   return (
     <div>
       <Filter onFilterChange={handleFilterChange} categories={categories} />
       <div>
-        {tiles.filter(tile => filter === 'All' || tile.category === filter)
-          .map(tile => <Tile key={tile.id} {...tile} />)
-        }
-      </div >
-    </div >
-  )
-}
+        {filteredTiles} {/* Just render filteredTiles here */}
+      </div>
+    </div>
+  );
+};
 
 export default App;
