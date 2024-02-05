@@ -13,7 +13,7 @@ const App = () => {
     const fetchData = async () => {
       try {
         const dataPromises = categories.map(category =>
-          fetch('./components/data/${category.toLowerCase()}.json').then(response => response.json())
+          fetch(`./data/${category.toLowerCase()}.json`).then(response => response.json())
         );
 
         const data = await Promise.all(dataPromises);
