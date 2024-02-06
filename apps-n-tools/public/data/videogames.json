@@ -2,12 +2,14 @@
     {
       "id": 1,
       "title": "Palworld",
+      "image": "vg.png",
       "category": "Video Games",
       "content": "Palworld is aaopen-world survival crafting..."
     },
     {
       "id": 2,
       "title": "Starfield",
+      "image": "vg.png",
       "category": "Video Games",
       "content": "This is an open-world role-playing game in..."
     }

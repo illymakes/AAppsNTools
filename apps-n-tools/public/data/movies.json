@@ -2,12 +2,14 @@
     {
       "id": 1,
       "title": "Inception",
+      "image": "movie_image1.png",
       "category": "Movies",
-      "content": "A science fiction action film directed by Christopher Nolan..."
+      "content": "A science fiction action film directed by..."
     },
     {
       "id": 2,
       "title": "The Matrix",
+      "image": "movie_image2.png",
       "category": "Movies",
       "content": "A 1999 science fiction action film..."
     }
