@@ -11,6 +11,35 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --icon-color: white; 
+  --icon-hover-color: #646cff; 
+}
+
+[data-theme='dark'] {
+  --icon-color: white; 
+  --icon-hover-color: #646cff; 
+}
+
+.icon {
+  color: var(--icon-color);
+  transition: color 0.3s ease; /* Smooth transition for color change */
+}
+
+.icon:hover {
+  color: #646cff;
+}
+
+.heart-icon:hover {
+  color: red;
+}
+
+.search-icon:hover {
+  color: #646cff;
+}
+
+.icon:active {
+  transform: scale(0.9);
 }
 
 a {
@@ -24,8 +53,6 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
 }

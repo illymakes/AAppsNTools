@@ -3,6 +3,7 @@
       "id": 1,
       "title": "The Great Gatsby",
       "image": "book_image1.png",
+      "year": "1925",
       "category": "Books",
       "content": "A novel by F. Scott Fitzgerald..."
     },
@@ -10,6 +11,7 @@
       "id": 2,
       "title": "1984",
       "image": "book_image2.png",
+      "year": "1949",
       "category": "Books",
       "content": "A dystopian novel by George Orwell..."
     }
