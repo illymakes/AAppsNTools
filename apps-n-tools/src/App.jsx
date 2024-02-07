@@ -12,12 +12,19 @@ function App() {
   const theme = createTheme({
     palette: {
       mode: darkMode ? 'dark' : 'light',
+      ...(darkMode ? {
+        // Define dark mode specific colors
+        primary: { main: '#e0e0e0' },
+        background: { default: '#121212' },
+        text: { primary: '#e0e0e0' },
+      } : {
+        // Define light mode specific colors
+        primary: { main: '#212121' },
+        background: { default: '#ffffff' },
+        text: { primary: '#212121', secondary: '#757575' },
+      })
     },
-  });
-
-  const handleModeChange = (event) => {
-    setDarkMode(event.target.checked);
-  };
+    });
 
   const [cardData, setCardData] = useState([]);
 
@@ -46,7 +53,6 @@ function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <TopAppBar darkMode={darkMode} setDarkMode={setDarkMode} />
-      {/* <Switch checked={darkMode} onChange={handleModeChange} /> */}
       <div className="tile-grid-container">
         <Container>
           <Grid container spacing={4}>

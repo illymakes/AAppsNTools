@@ -5,14 +5,13 @@ import { faHeart, faMagnifyingGlass, faFilter, faBars } from '@fortawesome/free-
 
 function TopAppBar({ darkMode, setDarkMode }) {
     return (
-        <AppBar position="static">
+        <AppBar position="static" className="topAppBar">
             <Toolbar>
                 <IconButton edge="start" color="inherit" aria-label="menu">
                 <FontAwesomeIcon icon={faBars} className="icon" /> {/* Menu Icon */}
                 </IconButton>
-                <Typography variant="h6" style={{ flexGrow: 1 }}>
-                    {/* logo here too */}
-                    AAppsNTools
+                <Typography variant="h6" style={{ flexGrow: 1, display: "flex", alignItems: "center" }}>
+                    <img src="src/assets/rocket-ship-svg.svg" className="logo"></img>AAppsNTools
                 </Typography>
                 <IconButton color="inherit">
                     <FontAwesomeIcon icon={faHeart} className="heart-icon" /> {/* Faves Icon */}
