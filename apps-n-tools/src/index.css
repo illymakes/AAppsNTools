@@ -78,6 +78,63 @@
   vertical-align: middle;
 }
 
+.slide-out-menu {
+  height: 100vh;
+  position: fixed;
+  z-index: 1300;
+  top: 0;
+  left: -250px;
+  width: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: all 0.5s ease;
+  padding-top: 60px;
+}
+
+.content-container {
+  transition: margin-left 0.5s;
+  padding: 20px;
+}
+
+.content-shift {
+  transition: margin-left 0.5s ease;
+  margin-left: 250px;
+}
+
+.slide-out-menu a {
+  padding: 10px 15px;
+  text-decoration: none;
+  font-size: 22px;
+  color: white;
+  display: block;
+  transition: 0.3s;
+}
+
+.slide-out-menu a:hover {
+  color: #f1f1f1;
+}
+
+.slide-out-menu .close-btn {
+  position: absolute;
+  top: 0;
+  right: 15px;
+  color: white;
+  cursor: pointer;
+}
+
+.slide-out-menu.open {
+  width: 250px;
+  left: 0;
+}
+
+.close-btn {
+  position: absolute;
+  top: 0;
+  right: 15px;
+  color: white;
+  cursor: pointer;
+}
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -100,7 +157,7 @@ h1 {
 }
 
 button {
-  border-radius: 8px;
+  border-radius: 10px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
@@ -115,10 +172,10 @@ button:hover {
   border-color: #646cff;
 }
 
-button:focus,
+/* button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
-}
+} */
 
 @media (prefers-color-scheme: light) {
   :root {
