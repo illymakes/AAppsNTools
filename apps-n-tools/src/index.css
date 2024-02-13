@@ -68,7 +68,17 @@
   transform: translateX(0);
 }
 
-.slideMenu a {
+.slideMenu .top-menu-link a {
+  display: block;
+  color: #ffffff;
+  padding: 15px 20px;
+  text-decoration: none;
+  font-size: 18px;
+  border-top: 1px solid #444;
+  border-bottom: 1px solid #444;
+}
+
+.slideMenu .lower-menu-links a {
   display: block;
   color: #ffffff;
   padding: 15px 20px;
@@ -77,8 +87,18 @@
   border-bottom: 1px solid #444;
 }
 
+.slideMenu .bottom-menu-text {
+  bottom: 0;
+  position: absolute;
+  padding-bottom: 10px;
+  width: 100%;
+  text-align: center;
+  font-size: 12px;
+  font-family: "RobotoMono Regular", monospace;
+}
+
 .slideMenu a:hover {
-  background-color: #444;
+  background-color: #242424;
   color: #BB86FC;
 }
 
@@ -103,8 +123,18 @@
 
 .logo {
   max-width: 50px;
+
   padding-left: 8px;
   padding-right: 8px;
+}
+
+.logo-menu {
+  max-width: 60px;
+  padding: 2px;
+  margin-left: 8px;
+  margin-right: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .icon {
@@ -136,6 +166,10 @@
 
 .topAppBar {
   vertical-align: middle;
+}
+
+.topAppBar .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline {
+  border-color: #E0E0E0;
 }
 
 a {

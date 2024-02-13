@@ -2,10 +2,10 @@ import { useState } from 'react';
 import { AppBar, Toolbar, Typography, Switch, IconButton, Menu, MenuItem, Checkbox, FormControlLabel, TextField } from '@mui/material';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart, faMagnifyingGlass, faFilter, faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faHeart, faMagnifyingGlass, faFilter, faBars, faTimes, faSortAlphaDown, faSortAlphaUp } from '@fortawesome/free-solid-svg-icons';
 import './index.css';
 
-function TopAppBar({ darkMode, setDarkMode, categories, onFilterChange, onSearchChange, toggleMenu }) {
+function TopAppBar({ darkMode, setDarkMode, categories, onFilterChange, onSearchChange, toggleMenu, onSortChange, sortOrder }) {
     const [anchorEl, setAnchorEl] = useState(null);
     const [selectedFilters, setSelectedFilters] = useState([]);
     const [showSearch, setShowSearch] = useState(false);
@@ -42,6 +42,7 @@ function TopAppBar({ darkMode, setDarkMode, categories, onFilterChange, onSearch
     const closeSearchBar = () => {
         setShowSearch(false);
         setSearchQuery('');
+        onSearchChange('');
     };
 
     return (
@@ -61,7 +62,11 @@ function TopAppBar({ darkMode, setDarkMode, categories, onFilterChange, onSearch
                         placeholder="Search..."
                         value={searchQuery}
                         onChange={handleSearchChange}
-                        style={{ flexGrow: 1, marginRight: 8, transition: "width 0.5s ease" }}
+                        style={{
+                            flexGrow: 1,
+                            marginRight: 8,
+                            transition: "width 0.5s ease",
+                        }}
                     />
                 ) : null}
                 <IconButton color="inherit" onClick={showSearch ? closeSearchBar : toggleSearchBar}>
@@ -77,6 +82,39 @@ function TopAppBar({ darkMode, setDarkMode, categories, onFilterChange, onSearch
                     open={Boolean(anchorEl)}
                     onClose={handleFilterMenuClose}
                 >
+                    <div>
+                        <div style={{ display: 'flex', justifyContent: 'center', width: '100%', alignItems: 'center' }}>
+                            <div
+                                onClick={() => onSortChange('asc')}
+                                style={{
+                                    marginRight: 10, // Add some space between the icons
+                                    padding: '2px',
+                                    background: sortOrder === 'asc' ? 'rgba(0, 0, 0, 0.3)' : 'none',
+                                    borderRadius: '4px',
+                                    cursor: 'pointer',
+                                }}
+                            >
+                                <FontAwesomeIcon
+                                    icon={faSortAlphaDown}
+                                    style={{ color: sortOrder === 'asc' ? '#BB86FC' : undefined, fontSize: '1.1em' }}
+                                />
+                            </div>
+                            <div
+                                onClick={() => onSortChange('desc')}
+                                style={{
+                                    padding: '2px',
+                                    background: sortOrder === 'desc' ? 'rgba(0, 0, 0, 0.3)' : 'none',
+                                    borderRadius: '4px',
+                                    cursor: 'pointer',
+                                }}
+                            >
+                                <FontAwesomeIcon
+                                    icon={faSortAlphaUp}
+                                    style={{ color: sortOrder === 'desc' ? '#BB86FC' : undefined, fontSize: '1.1em' }}
+                                />
+                            </div>
+                        </div>
+                    </div>
                     {categories.map(category => (
                         <MenuItem key={category} onClick={(event) => event.stopPropagation()}>
                             <FormControlLabel
@@ -126,6 +164,7 @@ TopAppBar.propTypes = {
     categories: PropTypes.arrayOf(PropTypes.string).isRequired,
     onFilterChange: PropTypes.func.isRequired,
     onSearchChange: PropTypes.func.isRequired,
+    onSortChange: PropTypes.func.isRequired,
 };
 
 export default TopAppBar;

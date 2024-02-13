@@ -6,14 +6,14 @@ const TileCard = ({ title, image, year, category, content, darkMode }) => {
         const colorsDarkMode = {
             books: '#FFA07A',
             movies: '#ADD8E6',
-            videogames: '#90EE90',
+            "video games": '#c478b5',
             default: '#A9A9A9',
         };
 
         const colorsLightMode = {
             books: '#FF6347',
             movies: '#1E90FF',
-            videogames: '#32CD32',
+            "video games": '#965b8a',
             default: '#696969',
         };
 
@@ -26,13 +26,17 @@ const TileCard = ({ title, image, year, category, content, darkMode }) => {
         };
     };
     return (
-        <Card sx={{ maxWidth: 345, m: 2 }}>
+        <Card>
             <CardActionArea>
                 <CardMedia
                     component="img"
                     height="140"
                     image={image}
                     alt={title}
+                    style={{
+                        paddingLeft: '4px',
+                        paddingRight: '4px',
+                    }}
                 />
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="div" sx={{ color: 'text.primary' }}>
