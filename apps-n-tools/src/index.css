@@ -40,6 +40,67 @@
   /* Other light theme styles */
 }
 
+.menuOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+}
+
+.slideMenu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100vh;
+  background: linear-gradient(90deg, rgba(18,18,18,1) 0%, rgba(24,24,24,1) 100%);
+  box-shadow: 3px 0px 10px rgba(0,0,0,0.5);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-out;
+  z-index: 110;
+  color: white;
+}
+
+.slideMenu.open {
+  transform: translateX(0);
+}
+
+.slideMenu a {
+  display: block;
+  color: #ffffff;
+  padding: 15px 20px;
+  text-decoration: none;
+  font-size: 18px;
+  border-bottom: 1px solid #444;
+}
+
+.slideMenu a:hover {
+  background-color: #444;
+  color: #BB86FC;
+}
+
+[data-theme='dark'] .slideMenu, [data-theme='light'] .slideMenu {
+  transform: translateX(0);
+}
+
+.menuCloseButton {
+  position: absolute;
+  top: -1px;
+  right: -64px; 
+  background: none;
+  border: none;
+  color: #ffffff; 
+  font-size: 24px; 
+  cursor: pointer;
+}
+
+.menuCloseButton:hover {
+  color: #ccc;
+}
+
 .logo {
   max-width: 50px;
   padding-left: 8px;
@@ -49,7 +110,6 @@
 .icon {
   color: var(--icon-color);
   transition: color 0.3s ease;
-  /* Smooth transition for color change */
   max-width: 20px;
 }
 
@@ -76,63 +136,6 @@
 
 .topAppBar {
   vertical-align: middle;
-}
-
-.slide-out-menu {
-  height: 100vh;
-  position: fixed;
-  z-index: 1300;
-  top: 0;
-  left: -250px;
-  width: 0;
-  background-color: #111;
-  overflow-x: hidden;
-  transition: all 0.5s ease;
-  padding-top: 60px;
-}
-
-.content-container {
-  transition: margin-left 0.5s;
-  padding: 20px;
-}
-
-.content-shift {
-  transition: margin-left 0.5s ease;
-  margin-left: 250px;
-}
-
-.slide-out-menu a {
-  padding: 10px 15px;
-  text-decoration: none;
-  font-size: 22px;
-  color: white;
-  display: block;
-  transition: 0.3s;
-}
-
-.slide-out-menu a:hover {
-  color: #f1f1f1;
-}
-
-.slide-out-menu .close-btn {
-  position: absolute;
-  top: 0;
-  right: 15px;
-  color: white;
-  cursor: pointer;
-}
-
-.slide-out-menu.open {
-  width: 250px;
-  left: 0;
-}
-
-.close-btn {
-  position: absolute;
-  top: 0;
-  right: 15px;
-  color: white;
-  cursor: pointer;
 }
 
 a {

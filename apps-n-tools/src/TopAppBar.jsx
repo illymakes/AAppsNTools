@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faMagnifyingGlass, faFilter, faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import './index.css';
 
-function TopAppBar({ darkMode, setDarkMode, categories, onFilterChange, onSearchChange }) {
+function TopAppBar({ darkMode, setDarkMode, categories, onFilterChange, onSearchChange, toggleMenu }) {
     const [anchorEl, setAnchorEl] = useState(null);
     const [selectedFilters, setSelectedFilters] = useState([]);
     const [showSearch, setShowSearch] = useState(false);
@@ -44,26 +44,12 @@ function TopAppBar({ darkMode, setDarkMode, categories, onFilterChange, onSearch
         setSearchQuery('');
     };
 
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-    const toggleMenu = () => {
-        setIsMenuOpen(!isMenuOpen);
-    };
-
     return (
         <AppBar position="static" className="topAppBar">
             <Toolbar className="topAppBar">
                 <IconButton edge="start" color="inherit" aria-label="menu" onClick={toggleMenu}>
                     <FontAwesomeIcon icon={faBars} className="icon" />
                 </IconButton>
-                <div className={`slide-out-menu ${isMenuOpen ? 'open' : ''}`}>
-                    <IconButton onClick={toggleMenu} className="close-btn">
-                        <FontAwesomeIcon icon={faTimes} />
-                    </IconButton>
-                    {/* Menu links */}
-                    <a href="#">Link 1</a>
-                    <a href="#">Link 2</a>
-                </div>
                 <Typography variant="h6" style={{ flexGrow: 1, display: "flex", alignItems: "center" }}>
                     <img src="src/assets/rocket-ship-svg.svg" className="logo"></img>AAppsNTools
                 </Typography>

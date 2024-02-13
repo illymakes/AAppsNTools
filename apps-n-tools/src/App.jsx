@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { createTheme, ThemeProvider, CssBaseline, Container, Grid } from '@mui/material';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import TileCard from './TileCard';
 import TopAppBar from './TopAppBar';
 import './index.css';
@@ -98,8 +100,6 @@ function App() {
     },
   });
 
-  console.log(isMenuOpen, setIsMenuOpen);
-
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -110,9 +110,21 @@ function App() {
         onFilterChange={handleFilterChange}
         onSearchChange={handleSearchChange}
         isMenuOpen={isMenuOpen}
-        setIsMenuOpen={setIsMenuOpen}
+        toggleMenu={() => setIsMenuOpen(!isMenuOpen)}
       />
-      <div className={`content-container ${isMenuOpen ? 'content-shift' : ''}`}>
+      <div>
+        {isMenuOpen && (
+          <div className="menuOverlay" onClick={() => setIsMenuOpen(false)}>
+            <div className={`slideMenu ${isMenuOpen ? 'open' : ''}`} style={{ transform: isMenuOpen ? 'translateX(0)' : 'translateX(-100%)' }}>
+              <button className="menuCloseButton" onClick={() => setIsMenuOpen(false)}>
+                <FontAwesomeIcon icon={faTimes} />
+              </button>
+              <a href="#">Link 1</a>
+              <a href="#">Link 2</a>
+              <a href="#">Link 3</a>
+            </div>
+          </div>
+        )}
         <div className="tile-grid-container">
           <Container>
             <Grid container spacing={4}>
