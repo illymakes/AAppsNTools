@@ -7,8 +7,6 @@ import TopAppBar from './TopAppBar';
 import './index.css';
 
 function App() {
-
-  // Create a dark theme
   const [darkMode, setDarkMode] = useState(true);
   const [cardData, setCardData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);

@@ -38,7 +38,11 @@ const TileCard = ({ title, image, year, category, content, darkMode }) => {
             display: 'flex',
             flexDirection: 'column',
         }}>
-            <CardActionArea sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+            <CardActionArea sx={{ 
+                height: '100%', 
+                display: 'flex', 
+                flexDirection: 'column' 
+                }}>
                 <CardMedia
                     component="img"
                     height="140"
