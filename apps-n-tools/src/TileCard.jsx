@@ -35,23 +35,33 @@ const TileCard = ({ title, image, year, category, content, darkMode }) => {
                 boxShadow: '0px 0px 20px rgba(0,0,0,0.2)',
             },
             overflow: 'hidden',
+            width: '100%',
             display: 'flex',
             flexDirection: 'column',
+            justifyContent: 'space-between',
         }}>
-            <CardActionArea sx={{ 
-                height: '100%', 
-                display: 'flex', 
-                flexDirection: 'column' 
-                }}>
+            <CardActionArea sx={{
+                height: '100%',
+                display: 'flex',
+                flexDirection: 'column'
+            }}>
                 <CardMedia
                     component="img"
-                    height="140"
+                    sx={{
+                        width: '100%',
+                        display: 'flex',
+                        flexDirection: 'column',
+                    }}
                     image={image}
                     alt={title}
-                    sx={{ width: '100%', objectFit: 'cover' }}
                 />
-                <CardContent sx={{ flexGrow: 1 }}>
-                
+                <CardContent sx={{
+                    flexGrow: 1,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between',
+                }}>
+
                     <Typography gutterBottom variant="h5" component="div" sx={{ color: 'text.primary' }}>
                         {title}
                     </Typography>

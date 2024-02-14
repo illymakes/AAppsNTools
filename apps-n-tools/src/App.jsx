@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { createTheme, ThemeProvider, CssBaseline, Container, Grid, Typography } from '@mui/material';
+import { createTheme, ThemeProvider, CssBaseline, Container, Grid, Typography, Box } from '@mui/material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes, faHeart } from '@fortawesome/free-solid-svg-icons';
 import TileCard from './TileCard';
@@ -119,14 +119,14 @@ function App() {
         styleOverrides: {
           maxWidthLg: {
             maxWidth: 'none',
-            maxHeight: '80%', 
+            maxHeight: '80%',
+          },
+          maxWidthMd: {
+            maxWidth: 'none',
+            maxHeight: '80%',
+          },
         },
-        maxWidthMd: {
-          maxWidth: 'none',
-          maxHeight: '80%', 
       },
-      },
-    },
       MuiOutlinedInput: {
         styleOverrides: {
           root: {
@@ -199,12 +199,15 @@ function App() {
             </div>
           </div>
         )}
-        <div className="tile-grid-container" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
-          <Container>
-            <Grid container spacing={4}>
+        <Box sx={{ pt: '32px', pb: '32px' }}>
+          <Container maxWidth="xl">
+            <Grid container spacing={2} justifyContent="center">
               {filteredData.map((data, index) => (
-                <Grid item key={index} xs={6} sm={6} md={4} lg={3} xl={2}
-                  style={{ display: "flex", justifyContent: "center" }}>
+                <Grid item key={index} xs={12} sm={6} md={4} lg={3} xl={2.4} sx={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  flexBasis: 'calc(20% - 16px)',
+                }}>
                   <TileCard
                     darkMode={darkMode}
                     title={data.title}
@@ -217,7 +220,7 @@ function App() {
               ))}
             </Grid>
           </Container>
-        </div>
+        </Box>
       </div>
     </ThemeProvider>
   );
