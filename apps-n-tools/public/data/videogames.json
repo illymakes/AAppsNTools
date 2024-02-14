@@ -1,42 +1,63 @@
 [
-  {
-      "id": 1,
-      "title": "Palworld",
-      "image": "./data/images/palworld_1.webp",
-      "year": "2024",
-      "category": "Video Games",
-      "content": "Palworld is an open-world survival crafting..."
-  },
-  {
-      "id": 2,
-      "title": "Starfield",
-      "image": "./data/images/starfield_1.webp",
-      "year": "2023",
-      "category": "Video Games",
-      "content": "This is an open-world role-playing game in..."
-  },
-  {
-      "id": 3,
-      "title": "Sonic Adventure 2 Battle",
-      "image": "./data/images/sa2b_1.webp",
-      "year": "2001",
-      "category": "Video Games",
-      "content": "Sonic Adventure 2 Battle is a platforming action-adventure game..."
-  },
-  {
-      "id": 4,
-      "title": "The Legend of Zelda: Breath of the Wild",
-      "image": "./data/images/botw_1.webp",
-      "year": "2017",
-      "category": "Video Games",
-      "content": "An action-adventure game developed by Nintendo..."
-  },
-  {
-      "id": 5,
-      "title": "Red Dead Redemption 2",
-      "image": "./data/images/rdr2.webp",
-      "year": "2018",
-      "category": "Video Games",
-      "content": "An action-adventure game developed by Rockstar Games..."
-  }
-]
+    {
+        "id": 1,
+        "title": "Palworld",
+        "image": "./data/images/palworld_1.webp",
+        "year": "2024",
+        "category": "Video Games",
+        "shortSummary": "Palworld is an open-world survival crafting...",
+        "description": "Palworld is an upcoming open-world survival crafting game developed by Pocketpair. Set in a vibrant world inhabited by mystical creatures called 'Pals,' players must gather resources, build shelters, and tame Pals to survive. With elements of farming, exploration, and multiplayer cooperation, Palworld offers a unique sandbox experience where players can unleash their creativity and forge bonds with adorable creatures.",
+        "tags": ["open-world", "survival", "crafting", "multiplayer"],
+        "author": "Pocketpair",
+        "link": "#"
+    },
+    {
+        "id": 2,
+        "title": "Starfield",
+        "image": "./data/images/starfield_1.webp",
+        "year": "2023",
+        "category": "Video Games",
+        "shortSummary": "This is an open-world role-playing game in...",
+        "description": "Starfield is an upcoming open-world role-playing game developed by Bethesda Game Studios. Set in a vast and immersive universe filled with futuristic technology and alien civilizations, Starfield promises to deliver a compelling narrative and endless exploration. Players will embark on epic space adventures, encounter diverse factions, and uncover the mysteries of the cosmos in this highly anticipated RPG.",
+        "tags": ["open-world", "role-playing", "space exploration", "sci-fi"],
+        "author": "Bethesda Game Studios",
+        "link": "#"
+    },
+    {
+        "id": 3,
+        "title": "Sonic Adventure 2 Battle",
+        "image": "./data/images/sa2b_1.webp",
+        "year": "2001",
+        "category": "Video Games",
+        "shortSummary": "Sonic Adventure 2 Battle is a platforming action-adventure game...",
+        "description": "Sonic Adventure 2 Battle is a classic platforming action-adventure game developed by Sonic Team. Featuring the iconic blue hedgehog, Sonic, and his friends, players embark on a high-speed quest to stop the evil Dr. Eggman from conquering the world. With fast-paced gameplay, thrilling levels, and memorable characters, Sonic Adventure 2 Battle remains a beloved title among fans of the franchise.",
+        "tags": ["platformer", "action-adventure", "Sonic the Hedgehog", "classic"],
+        "author": "Sonic Team",
+        "link": "#"
+    },
+    {
+        "id": 4,
+        "title": "The Legend of Zelda: Breath of the Wild",
+        "image": "./data/images/botw_1.webp",
+        "year": "2017",
+        "category": "Video Games",
+        "shortSummary": "An action-adventure game developed by Nintendo...",
+        "description": "The Legend of Zelda: Breath of the Wild is an action-adventure game developed and published by Nintendo. Set in a vast open world, players control Link as he explores the kingdom of Hyrule, battling enemies and solving puzzles to defeat the evil Calamity Ganon. With its innovative gameplay mechanics, breathtaking visuals, and immersive world design, Breath of the Wild redefines the Zelda franchise and sets a new standard for open-world gaming.",
+        "tags": ["action-adventure", "open-world", "Zelda", "Nintendo"],
+        "author": "Nintendo",
+        "link": "#"
+    },
+    {
+        "id": 5,
+        "title": "Red Dead Redemption 2",
+        "image": "./data/images/rdr2.webp",
+        "year": "2018",
+        "category": "Video Games",
+        "shortSummary": "An action-adventure game developed by Rockstar Games...",
+        "description": "Red Dead Redemption 2 is an action-adventure game developed and published by Rockstar Games. Set in the late 1800s, players take on the role of Arthur Morgan, an outlaw and member of the Van der Linde gang, as they traverse the rugged landscapes of the American frontier. With its sprawling open world, immersive storytelling, and unparalleled attention to detail, Red Dead Redemption 2 delivers an unforgettable Wild West experience.",
+        "tags": ["action-adventure", "open-world", "Western", "Rockstar Games"],
+        "author": "Rockstar Games",
+        "link": "#"
+    }
+  ]
+  

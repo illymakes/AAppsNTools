@@ -51,7 +51,7 @@ function App() {
       (item.title.toLowerCase().includes(lowerCaseQuery) ||
         item.year.toString().includes(lowerCaseQuery) ||
         item.category.toLowerCase().includes(lowerCaseQuery) ||
-        item.content.toLowerCase().includes(lowerCaseQuery)) &&
+        item.shortSummary.toLowerCase().includes(lowerCaseQuery)) &&
       (selectedFilters.length === 0 | selectedFilters.includes(item.category))
     );
     setFilteredData(filtered);
@@ -69,7 +69,7 @@ function App() {
       (item.title.toLowerCase().includes(searchQuery) ||
         item.year.toString().includes(searchQuery) ||
         item.category.toLowerCase().includes(searchQuery) ||
-        item.content.toLowerCase().includes(searchQuery))
+        item.shortSummary.toLowerCase().includes(searchQuery))
     );
     setFilteredData(filtered);
   };
@@ -214,7 +214,7 @@ function App() {
                     image={data.image}
                     year={data.year}
                     category={data.category}
-                    content={data.content}
+                    shortSummary={data.shortSummary}
                   />
                 </Grid>
               ))}
