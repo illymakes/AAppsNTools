@@ -2,7 +2,7 @@
   {
       "id": 1,
       "title": "Inception",
-      "image": "movie_image1.png",
+      "image": "./data/images/inception_1.webp",
       "year": "2010",
       "category": "Movies",
       "content": "A science fiction action film directed by..."
@@ -10,7 +10,7 @@
   {
       "id": 2,
       "title": "The Matrix",
-      "image": "movie_image2.png",
+      "image": "./data/images/thematrix_1.webp",
       "year": "1999",
       "category": "Movies",
       "content": "A 1999 science fiction action film..."
@@ -18,7 +18,7 @@
   {
       "id": 3,
       "title": "The Shawshank Redemption",
-      "image": "movie_image3.png",
+      "image": "./data/images/shawshankredemption_1.webp",
       "year": "1994",
       "category": "Movies",
       "content": "A drama film directed by Frank Darabont..."
@@ -26,7 +26,7 @@
   {
       "id": 4,
       "title": "Pulp Fiction",
-      "image": "movie_image4.png",
+      "image": "./data/images/pulpfiction_1.webp",
       "year": "1994",
       "category": "Movies",
       "content": "A crime film directed by Quentin Tarantino..."
@@ -34,7 +34,7 @@
   {
       "id": 5,
       "title": "The Godfather",
-      "image": "movie_image5.png",
+      "image": "./data/images/thegodfather_1.webp",
       "year": "1972",
       "category": "Movies",
       "content": "A crime film directed by Francis Ford Coppola..."

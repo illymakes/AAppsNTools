@@ -25,20 +25,29 @@ const TileCard = ({ title, image, year, category, content, darkMode }) => {
             color: color,
         };
     };
+
     return (
-        <Card>
-            <CardActionArea>
+        <Card sx={{
+            borderRadius: "10px",
+            transition: "transform 0.3s ease-in-out",
+            '&:hover': {
+                transform: 'scale(1.05)',
+                boxShadow: '0px 0px 20px rgba(0,0,0,0.2)',
+            },
+            overflow: 'hidden',
+            display: 'flex',
+            flexDirection: 'column',
+        }}>
+            <CardActionArea sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
                 <CardMedia
                     component="img"
                     height="140"
                     image={image}
                     alt={title}
-                    style={{
-                        paddingLeft: '4px',
-                        paddingRight: '4px',
-                    }}
+                    sx={{ width: '100%', objectFit: 'cover' }}
                 />
-                <CardContent>
+                <CardContent sx={{ flexGrow: 1 }}>
+                
                     <Typography gutterBottom variant="h5" component="div" sx={{ color: 'text.primary' }}>
                         {title}
                     </Typography>
@@ -60,6 +69,7 @@ const TileCard = ({ title, image, year, category, content, darkMode }) => {
 TileCard.propTypes = {
     title: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
+    year: PropTypes.string,
     category: PropTypes.string.isRequired,
     content: PropTypes.string.isRequired,
     darkMode: PropTypes.bool,

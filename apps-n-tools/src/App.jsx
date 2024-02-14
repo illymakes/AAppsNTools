@@ -107,7 +107,6 @@ function App() {
       })
     },
     typography: {
-      // Apply Roboto Mono to titles across the app
       fontFamily: 'Inter, system-ui, Avenir, Helvetica, Arial, sans-serif',
       h1: { fontFamily: 'RobotoMono Regular, monospace' },
       h2: { fontFamily: 'RobotoMono Regular, monospace' },
@@ -118,6 +117,18 @@ function App() {
       // Add other variants as needed
     },
     components: {
+      MuiContainer: {
+        styleOverrides: {
+          maxWidthLg: {
+            maxWidth: 'none',
+            maxHeight: '80%', 
+        },
+        maxWidthMd: {
+          maxWidth: 'none',
+          maxHeight: '80%', 
+      },
+      },
+    },
       MuiOutlinedInput: {
         styleOverrides: {
           root: {
@@ -190,7 +201,7 @@ function App() {
             </div>
           </div>
         )}
-        <div className="tile-grid-container">
+        <div className="tile-grid-container" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
           <Container>
             <Grid container spacing={4}>
               {filteredData.map((data, index) => (

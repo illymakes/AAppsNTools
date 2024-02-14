@@ -2,7 +2,7 @@
   {
       "id": 1,
       "title": "Palworld",
-      "image": "vg.png",
+      "image": "./data/images/palworld_1.webp",
       "year": "2024",
       "category": "Video Games",
       "content": "Palworld is an open-world survival crafting..."
@@ -10,7 +10,7 @@
   {
       "id": 2,
       "title": "Starfield",
-      "image": "vg.png",
+      "image": "./data/images/starfield_1.webp",
       "year": "2023",
       "category": "Video Games",
       "content": "This is an open-world role-playing game in..."
@@ -18,7 +18,7 @@
   {
       "id": 3,
       "title": "Sonic Adventure 2 Battle",
-      "image": "vg.png",
+      "image": "./data/images/sa2b_1.webp",
       "year": "2001",
       "category": "Video Games",
       "content": "Sonic Adventure 2 Battle is a platforming action-adventure game..."
@@ -26,7 +26,7 @@
   {
       "id": 4,
       "title": "The Legend of Zelda: Breath of the Wild",
-      "image": "vg.png",
+      "image": "./data/images/botw_1.webp",
       "year": "2017",
       "category": "Video Games",
       "content": "An action-adventure game developed by Nintendo..."
@@ -34,7 +34,7 @@
   {
       "id": 5,
       "title": "Red Dead Redemption 2",
-      "image": "vg.png",
+      "image": "./data/images/rdr2.webp",
       "year": "2018",
       "category": "Video Games",
       "content": "An action-adventure game developed by Rockstar Games..."

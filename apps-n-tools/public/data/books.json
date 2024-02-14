@@ -2,7 +2,7 @@
   {
       "id": 1,
       "title": "The Great Gatsby",
-      "image": "book_image1.png",
+      "image": "./data/images/gg1.webp",
       "year": "1925",
       "category": "Books",
       "content": "A novel by F. Scott Fitzgerald..."
@@ -10,7 +10,7 @@
   {
       "id": 2,
       "title": "1984",
-      "image": "book_image2.png",
+      "image": "./data/images/1984_1.webp",
       "year": "1949",
       "category": "Books",
       "content": "A dystopian novel by George Orwell..."
@@ -18,7 +18,7 @@
   {
       "id": 3,
       "title": "To Kill a Mockingbird",
-      "image": "book_image3.png",
+      "image": "./data/images/tkamb_1.webp",
       "year": "1960",
       "category": "Books",
       "content": "A novel by Harper Lee..."
@@ -26,7 +26,7 @@
   {
       "id": 4,
       "title": "Pride and Prejudice",
-      "image": "book_image4.png",
+      "image": "./data/images/prideandprejudice_1.webp",
       "year": "1813",
       "category": "Books",
       "content": "A novel by Jane Austen..."
@@ -34,7 +34,7 @@
   {
       "id": 5,
       "title": "The Catcher in the Rye",
-      "image": "book_image5.png",
+      "image": "./data/images/tcatr_1.webp",
       "year": "1951",
       "category": "Books",
       "content": "A novel by J.D. Salinger..."
