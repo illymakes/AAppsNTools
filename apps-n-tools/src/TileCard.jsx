@@ -1,7 +1,7 @@
 import { Card, CardActionArea, CardContent, CardMedia, Typography } from '@mui/material';
 import PropTypes from 'prop-types';
 
-const TileCard = ({ title, image, year, category, shortSummary, darkMode }) => {
+const TileCard = ({ title, image, year, category, shortSummary, darkMode, onClick }) => {
     const getCategoryStyle = (category) => {
         const colorsDarkMode = {
             books: '#FFA07A',
@@ -39,7 +39,7 @@ const TileCard = ({ title, image, year, category, shortSummary, darkMode }) => {
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'space-between',
-        }}>
+        }} onClick={onClick} >
             <CardActionArea sx={{
                 height: '100%',
                 display: 'flex',
@@ -87,6 +87,7 @@ TileCard.propTypes = {
     category: PropTypes.string.isRequired,
     shortSummary: PropTypes.string.isRequired,
     darkMode: PropTypes.bool,
+    onClick: PropTypes.func.isRequired,
 };
 
 export default TileCard;

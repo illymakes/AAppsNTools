@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes, faHeart } from '@fortawesome/free-solid-svg-icons';
 import TileCard from './TileCard';
 import TopAppBar from './TopAppBar';
+import Overlay from './Overlay';
 import './index.css';
 
 function App() {
@@ -15,6 +16,8 @@ function App() {
   const [searchQuery, setSearchQuery] = useState("");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [sortOrder, setSortOrder] = useState('asc');
+  const [overlayOpen, setOverlayOpen] = useState(false);
+  const [selectedData, setSelectedData] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -87,6 +90,16 @@ function App() {
       }
     });
     setFilteredData(sortedData);
+  };
+
+  const handleTileClick = (data) => {
+    setSelectedData(data);
+    setOverlayOpen(true);
+  };
+
+  const closeOverlay = () => {
+    setOverlayOpen(false);
+    setSelectedData(null);
   };
 
   const theme = createTheme({
@@ -215,6 +228,8 @@ function App() {
                     year={data.year}
                     category={data.category}
                     shortSummary={data.shortSummary}
+                    key={data.id}
+                    onClick={() => handleTileClick(data)}
                   />
                 </Grid>
               ))}
@@ -222,6 +237,7 @@ function App() {
           </Container>
         </Box>
       </div>
+      <Overlay open={overlayOpen} onClose={closeOverlay} data={selectedData || {}} />
     </ThemeProvider>
   );
 }
