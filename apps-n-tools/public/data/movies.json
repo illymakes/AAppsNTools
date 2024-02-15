@@ -11,7 +11,9 @@
         "description": "Inception is a mind-bending science fiction thriller that explores the concept of shared dreaming and subconscious manipulation. Directed by Christopher Nolan, the film follows a skilled thief who enters the dreams of others to steal secrets. As layers of reality blur, the protagonist faces his own inner demons and questions the nature of reality itself.",
         "tags": ["science fiction", "action", "dreams", "reality"],
         "author": "Christopher Nolan",
-        "link": "#"
+        "firstLink": "https://example.com/inception",
+        "secondLink": "https://example.com/inception/purchase",
+        "authorEmail": "#"
     },
     {
         "id": 2,
@@ -25,7 +27,9 @@
         "description": "The Matrix is a groundbreaking science fiction film that revolutionized the genre with its innovative special effects and philosophical themes. Directed by the Wachowskis, the story follows a computer hacker who discovers the true nature of reality—a simulated world created by sentient machines to subdue humanity. As he joins a rebellion against the machines, he must confront the boundaries of perception and free will.",
         "tags": ["science fiction", "action", "virtual reality", "philosophy"],
         "author": "The Wachowskis",
-        "link": "#"
+        "firstLink": "https://example.com/thematrix",
+        "secondLink": "https://example.com/thematrix/purchase",
+        "authorEmail": "#"
     },
     {
         "id": 3,
@@ -39,7 +43,9 @@
         "description": "The Shawshank Redemption is a poignant drama directed by Frank Darabont, based on a novella by Stephen King. Set within the confines of Shawshank State Penitentiary, the film tells the story of Andy Dufresne, a banker wrongfully convicted of murder. Through perseverance and friendship with fellow inmate Red, Andy maintains hope and resilience in the face of adversity.",
         "tags": ["drama", "friendship", "redemption", "hope"],
         "author": "Frank Darabont",
-        "link": "#"
+        "firstLink": "https://example.com/shawshankredemption",
+        "secondLink": "https://example.com/shawshankredemption/purchase",
+        "authorEmail": "#"
     },
     {
         "id": 4,
@@ -53,7 +59,9 @@
         "description": "Pulp Fiction is a stylized crime film directed by Quentin Tarantino, known for its nonlinear narrative and eclectic characters. Set in Los Angeles, the film weaves multiple interconnected storylines involving mobsters, hitmen, and boxers. Through its witty dialogue and unconventional storytelling, Pulp Fiction explores themes of morality, violence, and redemption.",
         "tags": ["crime", "dialogue", "nonlinear narrative", "morality"],
         "author": "Quentin Tarantino",
-        "link": "#"
+        "firstLink": "https://example.com/pulpfiction",
+        "secondLink": "https://example.com/pulpfiction/purchase",
+        "authorEmail": "#"
     },
     {
         "id": 5,
@@ -67,7 +75,8 @@
         "description": "The Godfather is a classic crime drama directed by Francis Ford Coppola, based on the novel by Mario Puzo. Set in the post-World War II era, the film follows the Corleone crime family and their patriarch, Don Vito Corleone. As he navigates the treacherous world of organized crime, Vito must balance family loyalty with the ruthless pursuit of power.",
         "tags": ["crime", "mafia", "family", "power"],
         "author": "Francis Ford Coppola",
-        "link": "#"
+        "firstLink": "https://example.com/thegodfather",
+        "secondLink": "https://example.com/thegodfather/purchase",
+        "authorEmail": "#"
     }
-  ]
-  
+]

@@ -17,34 +17,53 @@ const style = {
   borderRadius: 2,
 };
 
-const Overlay = ({ open, onClose, data, darkMode }) => {
+const button1TextMapping = {
+  movies: 'View Website',
+  books: 'View Website',
+  'video games': 'View Website',
+};
+
+const button2TextMapping = {
+  movies: 'Stream Here',
+  books: 'Read Here',
+  'video games': 'Play Here',
+};
+
+const Overlay = ({ open, onClose, data, darkMode, setSearchQuery }) => {
   if (!open) return null;
+
+  const button1Text = button1TextMapping[data.category.toLowerCase()] || 'Learn More'; // Default text if category is not found
+  const button2Text = button2TextMapping[data.category.toLowerCase()] || 'Learn More'; // Default text if category is not found
+
 
   const getCategoryStyle = (category) => {
     const colorsDarkMode = {
-        books: '#FFA07A',
-        movies: '#ADD8E6',
-        "video games": '#c478b5',
-        default: '#A9A9A9',
+      books: '#FFA07A',
+      movies: '#ADD8E6',
+      "video games": '#c478b5',
+      default: '#A9A9A9',
     };
 
     const colorsLightMode = {
-        books: '#FF6347',
-        movies: '#1E90FF',
-        "video games": '#965b8a',
-        default: '#696969',
+      books: '#FF6347',
+      movies: '#1E90FF',
+      "video games": '#965b8a',
+      default: '#696969',
     };
 
     const color = (darkMode ? colorsDarkMode : colorsLightMode)[category.toLowerCase()] || (darkMode ? colorsDarkMode.default : colorsLightMode.default);
 
     return {
-        fontStyle: 'italic',
-        fontWeight: 'bold',
-        color: color,
+      fontStyle: 'italic',
+      fontWeight: 'bold',
+      color: color,
     };
-};
+  };
 
-  const { imageIcon, title, category, description, link, tags, author, authorEmail, itemLogo } = data;
+  const { imageIcon, title, category, description, link, tags, author, authorEmail, itemLogo, firstLink, secondLink } = data;
+  const category1 = data.category.toLowerCase();
+  const isValid1stLink = (firstLink) => firstLink && firstLink !== "-";
+  const isValid2ndLink = (secondLink) => secondLink && secondLink !== "-";
 
   return (
     <Modal
@@ -77,10 +96,22 @@ const Overlay = ({ open, onClose, data, darkMode }) => {
           <img src={itemLogo} alt="logo" style={{ maxWidth: 100, maxHeight: 100, alignSelf: 'flex-start' }} />
         </Box>
         <Typography sx={{ mt: 2 }}>{description}</Typography>
-        <Button variant="contained" sx={{ mt: 2 }} href={link} target="_blank" rel="noopener">Go to Link</Button>
+        {(category1 === 'video games' || category1 === 'movies') && isValid1stLink(firstLink) && (
+          <Button variant="contained" sx={{ mt: 2, mr: 1 }} href={data.firstLink} target="_blank" rel="noopener">
+            {button1Text}
+          </Button>
+        )}
+        {isValid2ndLink(secondLink) && (
+          <Button variant="contained" sx={{ mt: 2, mr: 1 }} href={data.secondLink} target="_blank" rel="noopener">
+            {button2Text}
+          </Button>
+        )}
         <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, mt: 2 }}>
           {tags?.map((tag, index) => (
-            <Chip key={index} label={tag} variant="outlined" />
+            <Chip key={index} label={tag} variant="outlined" onClick={() => {
+              setSearchQuery(tag);
+              onClose();
+            }} />
           ))}
         </Box>
         <Typography sx={{ mt: 2 }}>
@@ -104,8 +135,9 @@ Overlay.propTypes = {
     author: PropTypes.string,
     authorEmail: PropTypes.string,
     itemLogo: PropTypes.string,
-    darkMode: PropTypes.bool,
   }),
+  darkMode: PropTypes.bool,
+  setSearchQuery: PropTypes.func.isRequired,
 };
 
 export default Overlay;

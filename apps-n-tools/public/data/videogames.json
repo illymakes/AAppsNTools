@@ -11,7 +11,9 @@
         "description": "Palworld is an upcoming open-world survival crafting game developed by Pocketpair. Set in a vibrant world inhabited by mystical creatures called 'Pals,' players must gather resources, build shelters, and tame Pals to survive. With elements of farming, exploration, and multiplayer cooperation, Palworld offers a unique sandbox experience where players can unleash their creativity and forge bonds with adorable creatures.",
         "tags": ["open-world", "survival", "crafting", "multiplayer"],
         "author": "Pocketpair",
-        "link": "#"
+        "firstLink": "https://store.steampowered.com/palworld",
+        "secondLink": "https://store.steampowered.com/palworld/purchase",
+        "authorEmail": "#"
     },
     {
         "id": 2,
@@ -25,7 +27,9 @@
         "description": "Starfield is an open-world role-playing game developed by Bethesda Game Studios. Set in a vast and immersive universe filled with futuristic technology and alien civilizations, Starfield promises to deliver a compelling narrative and endless exploration. Players will embark on epic space adventures, encounter diverse factions, and uncover the mysteries of the cosmos in this highly anticipated RPG.",
         "tags": ["open-world", "role-playing", "space exploration", "sci-fi"],
         "author": "Bethesda Game Studios",
-        "link": "#"
+        "firstLink": "https://bethesda.net/starfield",
+        "secondLink": "https://bethesda.net/starfield/purchase",
+        "authorEmail": "#"
     },
     {
         "id": 3,
@@ -39,7 +43,9 @@
         "description": "Sonic Adventure 2 Battle is a classic platforming action-adventure game developed by Sonic Team. Featuring the iconic blue hedgehog, Sonic, and his friends, players embark on a high-speed quest to stop the evil Dr. Eggman from conquering the world. With fast-paced gameplay, thrilling levels, and memorable characters, Sonic Adventure 2 Battle remains a beloved title among fans of the franchise.",
         "tags": ["platformer", "action-adventure", "Sonic the Hedgehog", "classic"],
         "author": "Sonic Team",
-        "link": "#"
+        "firstLink": "https://store.steampowered.com/sonicadventure2battle",
+        "secondLink": "-",
+        "authorEmail": "#"
     },
     {
         "id": 4,
@@ -53,7 +59,9 @@
         "description": "The Legend of Zelda: Breath of the Wild is an action-adventure game developed and published by Nintendo. Set in a vast open world, players control Link as he explores the kingdom of Hyrule, battling enemies and solving puzzles to defeat the evil Calamity Ganon. With its innovative gameplay mechanics, breathtaking visuals, and immersive world design, Breath of the Wild redefines the Zelda franchise and sets a new standard for open-world gaming.",
         "tags": ["action-adventure", "open-world", "Zelda", "Nintendo"],
         "author": "Nintendo",
-        "link": "#"
+        "firstLink": "https://www.nintendo.com/breathofthewild",
+        "secondLink": "https://www.nintendo.com/breathofthewild/purchase",
+        "authorEmail": "#"
     },
     {
         "id": 5,
@@ -67,7 +75,8 @@
         "description": "Red Dead Redemption 2 is an action-adventure game developed and published by Rockstar Games. Set in the late 1800s, players take on the role of Arthur Morgan, an outlaw and member of the Van der Linde gang, as they traverse the rugged landscapes of the American frontier. With its sprawling open world, immersive storytelling, and unparalleled attention to detail, Red Dead Redemption 2 delivers an unforgettable Wild West experience.",
         "tags": ["action-adventure", "open-world", "Western", "Rockstar Games"],
         "author": "Rockstar Games",
-        "link": "#"
+        "firstLink": "https://www.rockstargames.com/reddeadredemption2",
+        "secondLink": "https://www.rockstargames.com/reddeadredemption2/purchase",
+        "authorEmail": "#"
     }
-  ]
-  
+]

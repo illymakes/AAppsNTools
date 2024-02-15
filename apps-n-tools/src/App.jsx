@@ -51,11 +51,15 @@ function App() {
   useEffect(() => {
     const lowerCaseQuery = searchQuery.toLowerCase();
     const filtered = cardData.filter(item =>
-      (item.title.toLowerCase().includes(lowerCaseQuery) ||
+      (
+        item.title.toLowerCase().includes(lowerCaseQuery) ||
         item.year.toString().includes(lowerCaseQuery) ||
         item.category.toLowerCase().includes(lowerCaseQuery) ||
-        item.shortSummary.toLowerCase().includes(lowerCaseQuery)) &&
-      (selectedFilters.length === 0 | selectedFilters.includes(item.category))
+        item.shortSummary.toLowerCase().includes(lowerCaseQuery) ||
+        (item.tags && item.tags.some(tag => tag.toLowerCase().includes(lowerCaseQuery)))
+      ) && (
+        selectedFilters.length === 0 || selectedFilters.includes(item.category)
+      )
     );
     setFilteredData(filtered);
   }, [selectedFilters, cardData, searchQuery]);
@@ -237,7 +241,12 @@ function App() {
           </Container>
         </Box>
       </div>
-      <Overlay open={overlayOpen} onClose={closeOverlay} data={selectedData || {}} />
+      <Overlay
+        open={overlayOpen}
+        onClose={closeOverlay}
+        data={selectedData || {}}
+        setSearchQuery={setSearchQuery}
+      />
     </ThemeProvider>
   );
 }
