@@ -106,6 +106,8 @@ function App() {
     setSelectedData(null);
   };
 
+  const [showSearch, setShowSearch] = useState(false);
+
   const theme = createTheme({
     palette: {
       mode: darkMode ? 'dark' : 'light',
@@ -192,6 +194,8 @@ function App() {
         toggleMenu={() => setIsMenuOpen(!isMenuOpen)}
         sortOrder={sortOrder}
         onSortChange={handleSortChange}
+        showSearch={showSearch}
+        setShowSearch={setShowSearch}
       />
       <div>
         {isMenuOpen && (

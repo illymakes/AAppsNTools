@@ -108,10 +108,14 @@ const Overlay = ({ open, onClose, data, darkMode, setSearchQuery }) => {
         )}
         <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, mt: 2 }}>
           {tags?.map((tag, index) => (
-            <Chip key={index} label={tag} variant="outlined" onClick={() => {
-              setSearchQuery(tag);
-              onClose();
-            }} />
+            <Chip
+              key={index}
+              label={tag}
+              variant="outlined"
+              onClick={() => {
+                setSearchQuery(tag);
+                onClose();
+              }} />
           ))}
         </Box>
         <Typography sx={{ mt: 2 }}>

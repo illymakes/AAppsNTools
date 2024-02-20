@@ -52,7 +52,10 @@ function TopAppBar({ darkMode, setDarkMode, categories, onFilterChange, onSearch
                     <FontAwesomeIcon icon={faBars} className="icon" />
                 </IconButton>
                 <Typography variant="h6" style={{ flexGrow: 1, display: "flex", alignItems: "center" }}>
-                    <img src="src/assets/rocket-ship-svg.svg" className="logo"></img>AAppsNTools
+                    <a href="#" style={{ display: "flex", alignItems: "center", textDecoration: "none", color: "inherit" }}>
+                        <img src="src/assets/rocket-ship-svg.svg" className="logo" alt="Logo"></img>
+                        AAppsNTools
+                    </a>
                 </Typography>
                 {showSearch ? (
                     <TextField
@@ -165,6 +168,9 @@ TopAppBar.propTypes = {
     onFilterChange: PropTypes.func.isRequired,
     onSearchChange: PropTypes.func.isRequired,
     onSortChange: PropTypes.func.isRequired,
+    sortOrder: PropTypes.string.isRequired,
+    showSearch: PropTypes.bool.isRequired,
+    setShowSearch: PropTypes.func.isRequired,
 };
 
 export default TopAppBar;
