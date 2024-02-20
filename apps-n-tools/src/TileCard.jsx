@@ -1,7 +1,14 @@
+import { useState } from 'react';
 import { Card, CardActionArea, CardContent, CardMedia, Typography } from '@mui/material';
 import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart as faHeartRegular } from '@fortawesome/free-regular-svg-icons';
+import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons';
+import { useFavorites } from './FavoritesContext';
 
 const TileCard = ({ title, image, year, category, shortSummary, darkMode, onClick }) => {
+    const [liked, setLiked] = useState(false);
+
     const getCategoryStyle = (category) => {
         const colorsDarkMode = {
             books: '#FFA07A',
@@ -26,6 +33,18 @@ const TileCard = ({ title, image, year, category, shortSummary, darkMode, onClic
         };
     };
 
+    const toggleLike = (e) => {
+        e.stopPropagation();
+        setLiked(!liked);
+    };
+
+    const { addFavorite, removeFavorite } = useFavorites();
+    // To add an item
+    //addFavorite(item);
+
+    // To remove an item
+    //removeFavorite(itemId);
+
     return (
         <Card sx={{
             borderRadius: "10px",
@@ -39,43 +58,42 @@ const TileCard = ({ title, image, year, category, shortSummary, darkMode, onClic
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'space-between',
+            position: 'relative',
         }} onClick={onClick} >
-            <CardActionArea sx={{
-                height: '100%',
-                display: 'flex',
-                flexDirection: 'column'
-            }}>
-                <CardMedia
-                    component="img"
-                    sx={{
-                        width: '100%',
-                        display: 'flex',
-                        flexDirection: 'column',
-                    }}
-                    image={image}
-                    alt={title}
-                />
-                <CardContent sx={{
-                    flexGrow: 1,
+            <CardMedia
+                component="img"
+                sx={{
+                    width: '100%',
                     display: 'flex',
                     flexDirection: 'column',
-                    justifyContent: 'space-between',
-                }}>
-
-                    <Typography gutterBottom variant="h5" component="div" sx={{ color: 'text.primary' }}>
-                        {title}
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary" component="div">
-                        {year}
-                    </Typography>
-                    <Typography variant="body2" component="div" sx={getCategoryStyle(category)}>
-                        {category}
-                    </Typography>
-                    <Typography variant="body2" sx={{ color: 'text.primary' }}>
-                        {shortSummary}
-                    </Typography>
-                </CardContent>
-            </CardActionArea>
+                }}
+                image={image}
+                alt={title}
+            />
+            <div style={{ display: 'flex', justifyContent: 'flex-end', position: 'relative', top: '-46px', right: '8px' }}>
+                <button onClick={toggleLike} style={{ background: 'none', border: 'none', cursor: 'pointer' }}>
+                    <FontAwesomeIcon icon={liked ? faHeartSolid : faHeartRegular} color={liked ? 'red' : 'grey'} />
+                </button>
+            </div>
+            <CardContent sx={{
+                flexGrow: 1,
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+            }}>
+                <Typography gutterBottom variant="h5" component="div" sx={{ color: 'text.primary' }}>
+                    {title}
+                </Typography>
+                <Typography variant="body2" color="text.secondary" component="div">
+                    {year}
+                </Typography>
+                <Typography variant="body2" component="div" sx={getCategoryStyle(category)}>
+                    {category}
+                </Typography>
+                <Typography variant="body2" sx={{ color: 'text.primary' }}>
+                    {shortSummary}
+                </Typography>
+            </CardContent>
         </Card>
     );
 };

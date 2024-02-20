@@ -1,6 +1,11 @@
+import { useState } from 'react';
 import { Box, Modal, Typography, Button, Chip, IconButton, Link } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart as faHeartRegular } from '@fortawesome/free-regular-svg-icons';
+import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons';
+import { useFavorites } from './FavoritesContext';
 
 const style = {
   position: 'absolute',
@@ -30,6 +35,9 @@ const button2TextMapping = {
 };
 
 const Overlay = ({ open, onClose, data, darkMode, setSearchQuery }) => {
+
+  const [liked, setLiked] = useState(false);
+
   if (!open) return null;
 
   const button1Text = button1TextMapping[data.category.toLowerCase()] || 'Learn More'; // Default text if category is not found
@@ -60,10 +68,22 @@ const Overlay = ({ open, onClose, data, darkMode, setSearchQuery }) => {
     };
   };
 
+  const toggleLike = (e) => {
+    e.stopPropagation(); // Prevent the modal from closing if it's setup to close on backdrop click
+    setLiked(!liked);
+  };
+
   const { imageIcon, title, category, description, link, tags, author, authorEmail, itemLogo, firstLink, secondLink } = data;
   const category1 = data.category.toLowerCase();
   const isValid1stLink = (firstLink) => firstLink && firstLink !== "-";
   const isValid2ndLink = (secondLink) => secondLink && secondLink !== "-";
+
+  const { addFavorite, removeFavorite } = useFavorites();
+  // To add an item
+  //addFavorite(item);
+
+  // To remove an item
+  //removeFavorite(itemId);
 
   return (
     <Modal
@@ -89,8 +109,15 @@ const Overlay = ({ open, onClose, data, darkMode, setSearchQuery }) => {
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
             <img src={imageIcon} alt="icon" style={{ width: 60, height: 60, borderRadius: '10%' }} />
             <Box>
-              <Typography id="modal-title" variant="h5" component="h2">{title}</Typography>
-              <Typography id="modal-description" sx={getCategoryStyle(category)}>{category}</Typography>
+              <Typography id="modal-title" variant="h5" component="h2">
+                {title}
+                <IconButton onClick={toggleLike} size="medium" sx={{ ml: 1.5 }}>
+                  <FontAwesomeIcon icon={liked ? faHeartSolid : faHeartRegular} color={liked ? 'red' : 'grey'} />
+                </IconButton>
+              </Typography>
+              <Typography id="modal-description" sx={getCategoryStyle(category)}>
+                {category}
+              </Typography>
             </Box>
           </Box>
           <img src={itemLogo} alt="logo" style={{ maxWidth: 100, maxHeight: 100, alignSelf: 'flex-start' }} />

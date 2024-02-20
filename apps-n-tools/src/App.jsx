@@ -6,6 +6,7 @@ import TileCard from './TileCard';
 import TopAppBar from './TopAppBar';
 import Overlay from './Overlay';
 import './index.css';
+import { FavoritesProvider } from './FavoritesContext';
 
 function App() {
   const [darkMode, setDarkMode] = useState(true);
@@ -182,6 +183,7 @@ function App() {
   });
 
   return (
+    <FavoritesProvider>
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <TopAppBar
@@ -252,6 +254,7 @@ function App() {
         setSearchQuery={setSearchQuery}
       />
     </ThemeProvider>
+    </FavoritesProvider>
   );
 }
 
