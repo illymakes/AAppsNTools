@@ -4,10 +4,28 @@ import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart as faHeartRegular } from '@fortawesome/free-regular-svg-icons';
 import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons';
-import { addFavorite, removeFavorite, checkFavorite } from './db';
+import { useFavorites } from './useFavorites';
 
 const TileCard = ({ title, image, year, category, shortSummary, darkMode, onClick }) => {
+    const { addFav, removeFav, isFavorited } = useFavorites(); // Use context
     const [liked, setLiked] = useState(false);
+
+    useEffect(() => {
+        const check = async () => {
+            const isLiked = await isFavorited(title, category);
+            setLiked(isLiked);
+        };
+        check();
+    }, [title, category, isFavorited]);
+
+    const toggleLike = async () => {
+        if (liked) {
+            await removeFav(title, category);
+        } else {
+            await addFav({ id: title, category });
+        }
+        setLiked(!liked);
+    };
 
     const getCategoryStyle = (category) => {
         const colorsDarkMode = {
@@ -31,25 +49,6 @@ const TileCard = ({ title, image, year, category, shortSummary, darkMode, onClic
             fontWeight: 'bold',
             color: color,
         };
-    };
-
-    useEffect(() => {
-        const check = async () => {
-            const isFavorited = await checkFavorite(title, category);
-            setLiked(isFavorited);
-        };
-        check();
-    }, [title, category]);
-
-    const toggleLike = async (e) => {
-        e.stopPropagation();
-        const newState = !liked;
-        setLiked(newState);
-        if (newState) {
-            await addFavorite({ id: title, category });
-        } else {
-            await removeFavorite(title, category);
-        }
     };
 
     return (

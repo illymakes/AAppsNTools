@@ -1,47 +1,66 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Box, Modal, Typography, Button, Chip, IconButton, Link } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart as faHeartRegular } from '@fortawesome/free-regular-svg-icons';
 import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons';
-
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: '70%',
-  bgcolor: 'background.paper',
-  border: '1px solid #ddd',
-  boxShadow: 24,
-  p: 4,
-  overflowY: 'auto',
-  maxHeight: '80%',
-  borderRadius: 2,
-};
-
-const button1TextMapping = {
-  movies: 'View Website',
-  books: 'View Website',
-  'video games': 'View Website',
-};
-
-const button2TextMapping = {
-  movies: 'Stream Here',
-  books: 'Read Here',
-  'video games': 'Play Here',
-};
+import { useFavorites } from './useFavorites';
 
 const Overlay = ({ open, onClose, data, darkMode, setSearchQuery }) => {
-
+  const { addFav, removeFav, isFavorited } = useFavorites();
   const [liked, setLiked] = useState(false);
+
+  useEffect(() => {
+      if (data) {
+          const check = async () => {
+              const isLiked = await isFavorited(data.title, data.category);
+              setLiked(isLiked);
+          };
+          check();
+      }
+  }, [data, isFavorited]);
+
+  const toggleLike = async () => {
+      if (liked) {
+          await removeFav(data.title, data.category);
+      } else {
+          await addFav({ id: data.title, category: data.category });
+      }
+      setLiked(!liked);
+  };
 
   if (!open) return null;
 
   const button1Text = button1TextMapping[data.category.toLowerCase()] || 'Learn More'; // Default text if category is not found
   const button2Text = button2TextMapping[data.category.toLowerCase()] || 'Learn More'; // Default text if category is not found
 
+  const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: '70%',
+    bgcolor: 'background.paper',
+    border: '1px solid #ddd',
+    boxShadow: 24,
+    p: 4,
+    overflowY: 'auto',
+    maxHeight: '80%',
+    borderRadius: 2,
+  };
+  
+  const button1TextMapping = {
+    movies: 'View Website',
+    books: 'View Website',
+    'video games': 'View Website',
+  };
+  
+  const button2TextMapping = {
+    movies: 'Stream Here',
+    books: 'Read Here',
+    'video games': 'Play Here',
+  };
 
   const getCategoryStyle = (category) => {
     const colorsDarkMode = {
@@ -71,11 +90,6 @@ const Overlay = ({ open, onClose, data, darkMode, setSearchQuery }) => {
   const category1 = data.category.toLowerCase();
   const isValid1stLink = (firstLink) => firstLink && firstLink !== "-";
   const isValid2ndLink = (secondLink) => secondLink && secondLink !== "-";
-
-  const toggleLike = (e) => {
-    e.stopPropagation();
-    setLiked(newState);
-  };
 
   return (
     <Modal
