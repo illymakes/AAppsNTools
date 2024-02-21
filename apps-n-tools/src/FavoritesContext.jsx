@@ -1,23 +1,25 @@
-import React, { createContext, useContext, useState } from 'react';
+import { createContext, useState, useEffect } from 'react';
+import { getFavorites } from './db';
+import PropTypes from 'prop-types';
 
 const FavoritesContext = createContext();
 
-export const useFavorites = () => useContext(FavoritesContext);
-
 export const FavoritesProvider = ({ children }) => {
-  const [favorites, setFavorites] = useState([]);
+    const [favorites, setFavorites] = useState([]);
 
-  const addFavorite = (item) => {
-    setFavorites((prev) => [...prev, item]);
-  };
+    useEffect(() => {
+        const fetchFavorites = async () => {
+            const favs = await getFavorites();
+            setFavorites(favs);
+        };
+        fetchFavorites();
+    }, []);
 
-  const removeFavorite = (id) => {
-    setFavorites((prev) => prev.filter((item) => item.id !== id));
-  };
+    const value = { favorites, setFavorites };
 
-  return (
-    <FavoritesContext.Provider value={{ favorites, addFavorite, removeFavorite }}>
-      {children}
-    </FavoritesContext.Provider>
-  );
+    return <FavoritesContext.Provider value={value}>{children}</FavoritesContext.Provider>;
+};
+
+FavoritesProvider.propTypes = {
+    children: PropTypes.node.isRequired,
 };

@@ -184,76 +184,76 @@ function App() {
 
   return (
     <FavoritesProvider>
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <TopAppBar
-        darkMode={darkMode}
-        setDarkMode={setDarkMode}
-        categories={categories}
-        onFilterChange={handleFilterChange}
-        onSearchChange={handleSearchChange}
-        isMenuOpen={isMenuOpen}
-        toggleMenu={() => setIsMenuOpen(!isMenuOpen)}
-        sortOrder={sortOrder}
-        onSortChange={handleSortChange}
-        showSearch={showSearch}
-        setShowSearch={setShowSearch}
-      />
-      <div>
-        {isMenuOpen && (
-          <div className="menuOverlay" onClick={() => setIsMenuOpen(false)}>
-            <div className={`slideMenu ${isMenuOpen ? 'open' : ''}`} style={{ transform: isMenuOpen ? 'translateX(0)' : 'translateX(-100%)' }}>
-              <button className="menuCloseButton" onClick={() => setIsMenuOpen(false)}>
-                <FontAwesomeIcon icon={faTimes} />
-              </button>
-              <Typography variant="h6" style={{ flexGrow: 1, display: "flex", alignItems: "center", marginBottom: "10px", marginTop: "10px" }}>
-                <img src="src/assets/rocket-ship-svg.svg" className="logo-menu"></img>AAppsNTools
-              </Typography>
-              <div className="top-menu-link">
-                <a href="#">Link 1</a>
-              </div>
-              <div className="lower-menu-links">
-                <a href="#">Link 2</a>
-                <a href="#">Link 3</a>
-              </div>
-              <div className="bottom-menu-text">
-                Made with <FontAwesomeIcon icon={faHeart} /> by illymakes.
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <TopAppBar
+          darkMode={darkMode}
+          setDarkMode={setDarkMode}
+          categories={categories}
+          onFilterChange={handleFilterChange}
+          onSearchChange={handleSearchChange}
+          isMenuOpen={isMenuOpen}
+          toggleMenu={() => setIsMenuOpen(!isMenuOpen)}
+          sortOrder={sortOrder}
+          onSortChange={handleSortChange}
+          showSearch={showSearch}
+          setShowSearch={setShowSearch}
+        />
+        <div>
+          {isMenuOpen && (
+            <div className="menuOverlay" onClick={() => setIsMenuOpen(false)}>
+              <div className={`slideMenu ${isMenuOpen ? 'open' : ''}`} style={{ transform: isMenuOpen ? 'translateX(0)' : 'translateX(-100%)' }}>
+                <button className="menuCloseButton" onClick={() => setIsMenuOpen(false)}>
+                  <FontAwesomeIcon icon={faTimes} />
+                </button>
+                <Typography variant="h6" style={{ flexGrow: 1, display: "flex", alignItems: "center", marginBottom: "10px", marginTop: "10px" }}>
+                  <img src="src/assets/rocket-ship-svg.svg" className="logo-menu"></img>AAppsNTools
+                </Typography>
+                <div className="top-menu-link">
+                  <a href="#">Link 1</a>
+                </div>
+                <div className="lower-menu-links">
+                  <a href="#">Link 2</a>
+                  <a href="#">Link 3</a>
+                </div>
+                <div className="bottom-menu-text">
+                  Made with <FontAwesomeIcon icon={faHeart} /> by illymakes.
+                </div>
               </div>
             </div>
-          </div>
-        )}
-        <Box sx={{ pt: '32px', pb: '32px' }}>
-          <Container maxWidth="xl">
-            <Grid container spacing={2} justifyContent="center">
-              {filteredData.map((data, index) => (
-                <Grid item key={index} xs={12} sm={6} md={4} lg={3} xl={2.4} sx={{
-                  display: 'flex',
-                  justifyContent: 'center',
-                  flexBasis: 'calc(20% - 16px)',
-                }}>
-                  <TileCard
-                    darkMode={darkMode}
-                    title={data.title}
-                    image={data.image}
-                    year={data.year}
-                    category={data.category}
-                    shortSummary={data.shortSummary}
-                    key={data.id}
-                    onClick={() => handleTileClick(data)}
-                  />
-                </Grid>
-              ))}
-            </Grid>
-          </Container>
-        </Box>
-      </div>
-      <Overlay
-        open={overlayOpen}
-        onClose={closeOverlay}
-        data={selectedData || {}}
-        setSearchQuery={setSearchQuery}
-      />
-    </ThemeProvider>
+          )}
+          <Box sx={{ pt: '32px', pb: '32px' }}>
+            <Container maxWidth="xl">
+              <Grid container spacing={2} justifyContent="center">
+                {filteredData.map((data, index) => (
+                  <Grid item key={index} xs={12} sm={6} md={4} lg={3} xl={2.4} sx={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    flexBasis: 'calc(20% - 16px)',
+                  }}>
+                    <TileCard
+                      darkMode={darkMode}
+                      title={data.title}
+                      image={data.image}
+                      year={data.year}
+                      category={data.category}
+                      shortSummary={data.shortSummary}
+                      key={data.id}
+                      onClick={() => handleTileClick(data)}
+                    />
+                  </Grid>
+                ))}
+              </Grid>
+            </Container>
+          </Box>
+        </div>
+        <Overlay
+          open={overlayOpen}
+          onClose={closeOverlay}
+          data={selectedData || {}}
+          setSearchQuery={setSearchQuery}
+        />
+      </ThemeProvider>
     </FavoritesProvider>
   );
 }

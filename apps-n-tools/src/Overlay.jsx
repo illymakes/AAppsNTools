@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart as faHeartRegular } from '@fortawesome/free-regular-svg-icons';
 import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons';
-import { useFavorites } from './FavoritesContext';
 
 const style = {
   position: 'absolute',
@@ -68,22 +67,15 @@ const Overlay = ({ open, onClose, data, darkMode, setSearchQuery }) => {
     };
   };
 
-  const toggleLike = (e) => {
-    e.stopPropagation(); // Prevent the modal from closing if it's setup to close on backdrop click
-    setLiked(!liked);
-  };
-
-  const { imageIcon, title, category, description, link, tags, author, authorEmail, itemLogo, firstLink, secondLink } = data;
+  const { imageIcon, title, category, description, tags, author, authorEmail, itemLogo, firstLink, secondLink } = data;
   const category1 = data.category.toLowerCase();
   const isValid1stLink = (firstLink) => firstLink && firstLink !== "-";
   const isValid2ndLink = (secondLink) => secondLink && secondLink !== "-";
 
-  const { addFavorite, removeFavorite } = useFavorites();
-  // To add an item
-  //addFavorite(item);
-
-  // To remove an item
-  //removeFavorite(itemId);
+  const toggleLike = (e) => {
+    e.stopPropagation();
+    setLiked(newState);
+  };
 
   return (
     <Modal

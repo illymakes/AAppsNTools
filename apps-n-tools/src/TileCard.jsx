@@ -1,10 +1,10 @@
-import { useState } from 'react';
-import { Card, CardActionArea, CardContent, CardMedia, Typography } from '@mui/material';
+import { useState, useEffect } from 'react';
+import { Card, CardContent, CardMedia, Typography } from '@mui/material';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart as faHeartRegular } from '@fortawesome/free-regular-svg-icons';
 import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons';
-import { useFavorites } from './FavoritesContext';
+import { addFavorite, removeFavorite, checkFavorite } from './db';
 
 const TileCard = ({ title, image, year, category, shortSummary, darkMode, onClick }) => {
     const [liked, setLiked] = useState(false);
@@ -33,17 +33,24 @@ const TileCard = ({ title, image, year, category, shortSummary, darkMode, onClic
         };
     };
 
-    const toggleLike = (e) => {
+    useEffect(() => {
+        const check = async () => {
+            const isFavorited = await checkFavorite(title, category);
+            setLiked(isFavorited);
+        };
+        check();
+    }, [title, category]);
+
+    const toggleLike = async (e) => {
         e.stopPropagation();
-        setLiked(!liked);
+        const newState = !liked;
+        setLiked(newState);
+        if (newState) {
+            await addFavorite({ id: title, category });
+        } else {
+            await removeFavorite(title, category);
+        }
     };
-
-    const { addFavorite, removeFavorite } = useFavorites();
-    // To add an item
-    //addFavorite(item);
-
-    // To remove an item
-    //removeFavorite(itemId);
 
     return (
         <Card sx={{
@@ -66,6 +73,7 @@ const TileCard = ({ title, image, year, category, shortSummary, darkMode, onClic
                     width: '100%',
                     display: 'flex',
                     flexDirection: 'column',
+                    minHeight: '200px',
                 }}
                 image={image}
                 alt={title}

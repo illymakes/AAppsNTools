@@ -4,19 +4,22 @@ import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faMagnifyingGlass, faFilter, faBars, faTimes, faSortAlphaDown, faSortAlphaUp } from '@fortawesome/free-solid-svg-icons';
 import './index.css';
+import { getFavorites } from './db';
 
 function TopAppBar({ darkMode, setDarkMode, categories, onFilterChange, onSearchChange, toggleMenu, onSortChange, sortOrder }) {
-    const [anchorEl, setAnchorEl] = useState(null);
+    const [filterAnchorEl, setFilterAnchorEl] = useState(null);
+    const [favoritesAnchorEl, setFavoritesAnchorEl] = useState(null);
     const [selectedFilters, setSelectedFilters] = useState([]);
     const [showSearch, setShowSearch] = useState(false);
     const [searchQuery, setSearchQuery] = useState("");
+    const [favorites, setFavorites] = useState([]);
 
     const handleFilterMenuClick = (event) => {
-        setAnchorEl(event.currentTarget);
+        setFilterAnchorEl(event.currentTarget);
     };
 
     const handleFilterMenuClose = () => {
-        setAnchorEl(null);
+        setFilterAnchorEl(null);
     };
 
     const handleFilterChange = (event) => {
@@ -43,6 +46,16 @@ function TopAppBar({ darkMode, setDarkMode, categories, onFilterChange, onSearch
         setShowSearch(false);
         setSearchQuery('');
         onSearchChange('');
+    };
+
+    const handleFavoritesClick = async (event) => {
+        setFavoritesAnchorEl(event.currentTarget);
+        const favs = await getFavorites();
+        setFavorites(favs);
+    };
+
+    const handleFavoritesClose = () => {
+        setFavoritesAnchorEl(null);
     };
 
     return (
@@ -80,9 +93,9 @@ function TopAppBar({ darkMode, setDarkMode, categories, onFilterChange, onSearch
                 </IconButton>
                 <Menu
                     id="filter-menu"
-                    anchorEl={anchorEl}
+                    anchorEl={filterAnchorEl}
                     keepMounted
-                    open={Boolean(anchorEl)}
+                    open={Boolean(filterAnchorEl)}
                     onClose={handleFilterMenuClose}
                 >
                     <div>
@@ -134,8 +147,25 @@ function TopAppBar({ darkMode, setDarkMode, categories, onFilterChange, onSearch
                     ))}
                 </Menu>
                 <IconButton color="inherit">
-                    <FontAwesomeIcon icon={faHeart} className="heart-icon" />
+                    <FontAwesomeIcon icon={faHeart} className="heart-icon" onClick={handleFavoritesClick} />
                 </IconButton>
+                <Menu
+                    id="favorites-menu"
+                    anchorEl={favoritesAnchorEl}
+                    keepMounted
+                    open={Boolean(favoritesAnchorEl)}
+                    onClose={handleFavoritesClose}
+                >
+                    {favorites.length > 0 ? (
+                        favorites.map((fav, index) => (
+                            <MenuItem key={index} onClick={handleFavoritesClose}>
+                                {fav.id} - {fav.category}
+                            </MenuItem>
+                        ))
+                    ) : (
+                        <MenuItem onClick={handleFavoritesClose}>No Favorites</MenuItem>
+                    )}
+                </Menu>
                 <Switch
                     checked={darkMode}
                     onChange={(event) => setDarkMode(event.target.checked)}
