@@ -22,7 +22,6 @@ function App() {
 
   useEffect(() => {
     const fetchData = async () => {
-      // Assuming you fetch your data here
       const responses = await Promise.all([
         fetch('data/books.json').then(res => res.json()),
         fetch('data/movies.json').then(res => res.json()),
@@ -182,6 +181,18 @@ function App() {
     },
   });
 
+  const handleFavoriteSelect = (fav) => {
+    const selectedFav = cardData.find(item => {
+      const isMatch = String(item.title) === String(fav.id) && item.category === fav.category;
+      return isMatch;
+    });
+
+    if (selectedFav) {
+      setSelectedData(selectedFav);
+      setOverlayOpen(true);
+    }
+  };
+
   return (
     <FavoritesProvider>
       <ThemeProvider theme={theme}>
@@ -198,6 +209,7 @@ function App() {
           onSortChange={handleSortChange}
           showSearch={showSearch}
           setShowSearch={setShowSearch}
+          onFavoriteSelect={handleFavoriteSelect}
         />
         <div>
           {isMenuOpen && (

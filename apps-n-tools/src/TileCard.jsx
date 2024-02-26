@@ -1,24 +1,26 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Card, CardContent, CardMedia, Typography } from '@mui/material';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart as faHeartRegular } from '@fortawesome/free-regular-svg-icons';
 import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons';
-import { useFavorites } from './useFavorites';
+import { FavoritesContext } from './FavoritesContext';
 
 const TileCard = ({ title, image, year, category, shortSummary, darkMode, onClick }) => {
-    const { addFav, removeFav, isFavorited } = useFavorites(); // Use context
+    const { favorites, isFavorited, addFav, removeFav, updateTrigger } = useContext(FavoritesContext);
     const [liked, setLiked] = useState(false);
 
     useEffect(() => {
-        const check = async () => {
-            const isLiked = await isFavorited(title, category);
-            setLiked(isLiked);
+        const checkFavoriteStatus = async () => {
+            const status = await isFavorited(title, category);
+            setLiked(status);
         };
-        check();
-    }, [title, category, isFavorited]);
+    
+        checkFavoriteStatus();
+    }, [title, category, isFavorited, favorites, updateTrigger]);
 
-    const toggleLike = async () => {
+    const toggleLike = async (event) => {
+        event.stopPropagation();
         if (liked) {
             await removeFav(title, category);
         } else {
@@ -78,8 +80,12 @@ const TileCard = ({ title, image, year, category, shortSummary, darkMode, onClic
                 alt={title}
             />
             <div style={{ display: 'flex', justifyContent: 'flex-end', position: 'relative', top: '-46px', right: '8px' }}>
-                <button onClick={toggleLike} style={{ background: 'none', border: 'none', cursor: 'pointer' }}>
-                    <FontAwesomeIcon icon={liked ? faHeartSolid : faHeartRegular} color={liked ? 'red' : 'grey'} />
+                <button 
+                onClick={toggleLike} 
+                style={{ background: 'none', border: 'none', cursor: 'pointer' }}>
+                    <FontAwesomeIcon 
+                    icon={liked ? faHeartSolid : faHeartRegular} 
+                    color={liked ? 'red' : 'grey'} />
                 </button>
             </div>
             <CardContent sx={{

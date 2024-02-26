@@ -1,18 +1,30 @@
 import { useState } from 'react';
-import { AppBar, Toolbar, Typography, Switch, IconButton, Menu, MenuItem, Checkbox, FormControlLabel, TextField } from '@mui/material';
+import { AppBar, Toolbar, Typography, IconButton, Menu, MenuItem, Checkbox, FormControlLabel, TextField } from '@mui/material';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart, faMagnifyingGlass, faFilter, faBars, faTimes, faSortAlphaDown, faSortAlphaUp } from '@fortawesome/free-solid-svg-icons';
+import { faHeart, faMagnifyingGlass, faFilter, faBars, faTimes, faSortAlphaDown, faSortAlphaUp, faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 import './index.css';
-import { getFavorites } from './db';
+import { getFavorites, removeFavorite } from './db';
 
-function TopAppBar({ darkMode, setDarkMode, categories, onFilterChange, onSearchChange, toggleMenu, onSortChange, sortOrder }) {
+function TopAppBar({ darkMode, setDarkMode, categories, onFilterChange, onSearchChange, toggleMenu, onSortChange, sortOrder, onFavoriteSelect }) {
     const [filterAnchorEl, setFilterAnchorEl] = useState(null);
     const [favoritesAnchorEl, setFavoritesAnchorEl] = useState(null);
     const [selectedFilters, setSelectedFilters] = useState([]);
     const [showSearch, setShowSearch] = useState(false);
     const [searchQuery, setSearchQuery] = useState("");
     const [favorites, setFavorites] = useState([]);
+    const [removingFav, setRemovingFav] = useState(null);
+
+    const handleFavoritesClick = async (event) => {
+        setFavoritesAnchorEl(event.currentTarget);
+        const favs = await getFavorites();
+        setFavorites(favs);
+    };
+
+    const handleFavoriteItemClick = (fav) => {
+        onFavoriteSelect(fav);
+        setFavoritesAnchorEl(null); // Close the favorites menu
+    };
 
     const handleFilterMenuClick = (event) => {
         setFilterAnchorEl(event.currentTarget);
@@ -48,14 +60,24 @@ function TopAppBar({ darkMode, setDarkMode, categories, onFilterChange, onSearch
         onSearchChange('');
     };
 
-    const handleFavoritesClick = async (event) => {
-        setFavoritesAnchorEl(event.currentTarget);
-        const favs = await getFavorites();
-        setFavorites(favs);
-    };
-
     const handleFavoritesClose = () => {
         setFavoritesAnchorEl(null);
+    };
+
+    const removeFav = async (id, category) => {
+        setFavorites(prevFavorites => {
+            const updatedFavorites = prevFavorites.filter(fav => !(fav.id === id && fav.category === category));
+            return updatedFavorites;
+        });
+        await removeFavorite(id, category);
+    };
+
+    const removeFavWithAnimation = (fav) => {
+        setRemovingFav(fav.id);
+        setTimeout(() => {
+            removeFav(fav.id, fav.category);
+            setRemovingFav(null);
+        }, 500);
     };
 
     return (
@@ -146,8 +168,8 @@ function TopAppBar({ darkMode, setDarkMode, categories, onFilterChange, onSearch
                         </MenuItem>
                     ))}
                 </Menu>
-                <IconButton color="inherit">
-                    <FontAwesomeIcon icon={faHeart} className="heart-icon" onClick={handleFavoritesClick} />
+                <IconButton color="inherit" onClick={handleFavoritesClick}>
+                    <FontAwesomeIcon icon={faHeart} className="heart-icon" />
                 </IconButton>
                 <Menu
                     id="favorites-menu"
@@ -155,37 +177,52 @@ function TopAppBar({ darkMode, setDarkMode, categories, onFilterChange, onSearch
                     keepMounted
                     open={Boolean(favoritesAnchorEl)}
                     onClose={handleFavoritesClose}
+                    sx={{
+                        paddingRight: 10,
+                    }}
                 >
                     {favorites.length > 0 ? (
                         favorites.map((fav, index) => (
-                            <MenuItem key={index} onClick={handleFavoritesClose}>
-                                {fav.id} - {fav.category}
+                            <MenuItem key={index} className={removingFav === fav.id ? 'fade-out' : ''} onClick={() => handleFavoriteItemClick(fav)}>
+                                <IconButton
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        removeFav(fav.id, fav.category);
+                                    }}
+                                    edge="end"
+                                    aria-label="remove from favorites"
+                                    sx={{
+                                        marginRight: 0.5,
+                                    }}
+                                >
+                                    <FontAwesomeIcon
+                                        icon={faHeart}
+                                        color="red"
+                                    />
+                                </IconButton>
+                                {fav.category} - {fav.id}
                             </MenuItem>
                         ))
                     ) : (
-                        <MenuItem onClick={handleFavoritesClose}>No Favorites</MenuItem>
+                        <MenuItem onClick={handleFavoritesClose} disabled={true}>No Favorites</MenuItem>
                     )}
                 </Menu>
-                <Switch
-                    checked={darkMode}
-                    onChange={(event) => setDarkMode(event.target.checked)}
-                    name="darkModeToggle"
-                    color="default"
+                <IconButton
+                    color="inherit"
+                    onClick={() => setDarkMode(!darkMode)}
                     sx={{
-                        '& .MuiSwitch-switchBase.Mui-checked': {
-                            color: darkMode ? '#fff' : '#000',
-                        },
-                        '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': {
-                            backgroundColor: darkMode ? '#bbb' : '#888',
-                        },
-                        '& .MuiSwitch-thumb': {
-                            color: darkMode ? '#fff' : '#c4c4c4',
-                        },
-                        '& .MuiSwitch-track': {
-                            backgroundColor: darkMode ? '#777' : '#bbb',
-                        },
+                        display: 'inline-flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        width: 36,
+                        height: 36,
                     }}
-                />
+                >
+                    <FontAwesomeIcon
+                        icon={darkMode ? faSun : faMoon}
+                        style={{ width: '24px', height: '24px' }} // Fixed size for the icon itself
+                    />
+                </IconButton>
             </Toolbar>
         </AppBar>
     );

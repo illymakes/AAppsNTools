@@ -12,7 +12,7 @@ const Overlay = ({ open, onClose, data, darkMode, setSearchQuery }) => {
   const [liked, setLiked] = useState(false);
 
   useEffect(() => {
-      if (data) {
+      if (data && data.title && data.category) {
           const check = async () => {
               const isLiked = await isFavorited(data.title, data.category);
               setLiked(isLiked);
@@ -31,6 +31,18 @@ const Overlay = ({ open, onClose, data, darkMode, setSearchQuery }) => {
   };
 
   if (!open) return null;
+  
+  const button1TextMapping = {
+    movies: 'View Website',
+    books: 'View Website',
+    'video games': 'View Website',
+  };
+  
+  const button2TextMapping = {
+    movies: 'Stream Here',
+    books: 'Read Here',
+    'video games': 'Play Here',
+  };
 
   const button1Text = button1TextMapping[data.category.toLowerCase()] || 'Learn More'; // Default text if category is not found
   const button2Text = button2TextMapping[data.category.toLowerCase()] || 'Learn More'; // Default text if category is not found
@@ -48,18 +60,6 @@ const Overlay = ({ open, onClose, data, darkMode, setSearchQuery }) => {
     overflowY: 'auto',
     maxHeight: '80%',
     borderRadius: 2,
-  };
-  
-  const button1TextMapping = {
-    movies: 'View Website',
-    books: 'View Website',
-    'video games': 'View Website',
-  };
-  
-  const button2TextMapping = {
-    movies: 'Stream Here',
-    books: 'Read Here',
-    'video games': 'Play Here',
   };
 
   const getCategoryStyle = (category) => {
