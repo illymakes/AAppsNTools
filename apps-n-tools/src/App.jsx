@@ -287,9 +287,9 @@ function App() {
               </div>
             </div>
           )}
-          <Box sx={{ pt: '32px', pb: '32px' }}>
+          <Box>
+            <div className="view-toggle-btn">
             <IconButton
-              className="view-toggle-btn"
               variant="contained"
               onClick={() => setIsCondensedView(!isCondensedView)}
             >
@@ -297,6 +297,7 @@ function App() {
                 icon={isCondensedView ? faExpand : faCompress}>
               </FontAwesomeIcon>
             </IconButton>
+              </div>
             <Container maxWidth="xl">
               <Grid container spacing={2} justifyContent="center">
                 {filteredData.map((data, index) => (
