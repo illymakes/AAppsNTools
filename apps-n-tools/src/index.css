@@ -306,3 +306,19 @@ button:focus-visible {
   margin-right: 16px;
   z-index: 1000;
 }
+
+.condensed-card-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-right: 10px;
+  margin-left: 10px;
+  align-items: center;
+}
+
+.condensed-icon-div {
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  margin-right: 18px;
+}
