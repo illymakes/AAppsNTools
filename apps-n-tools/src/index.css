@@ -1,3 +1,27 @@
+/* For WebKit (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #a5a5a5;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #202020;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #363636;
+}
+
+/* For Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #202020 #a5a5a5;
+}
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
