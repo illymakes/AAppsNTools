@@ -301,8 +301,8 @@ button:focus-visible {
 }
 
 .view-toggle-btn {
-  position: absolute;
-  right: 16px;
-  top: 8px;
+  display: flex;
+  flex-direction: row-reverse;
+  margin-right: 16px;
   z-index: 1000;
 }
