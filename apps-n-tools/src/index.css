@@ -300,3 +300,9 @@ button:focus-visible {
   color: var(--accent-color-dark);
 }
 
+.view-toggle-btn {
+  position: absolute;
+  right: 16px;
+  top: 8px;
+  z-index: 1000;
+}
