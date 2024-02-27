@@ -246,6 +246,8 @@ function App() {
     }
   };
 
+const hoverColor = theme.palette.mode === 'dark' ? '#BB86FC' : '#6200ee';
+  
   return (
     <FavoritesProvider>
       <ThemeProvider theme={theme}>
@@ -290,8 +292,17 @@ function App() {
           <Box>
             <div className="view-toggle-btn">
             <IconButton
+              className="expandButton"
               variant="contained"
+              disableRipple
               onClick={() => setIsCondensedView(!isCondensedView)}
+              sx={{
+        color: 'inherit',
+        '&:hover': {
+          color: hoverColor,
+          backgroundColor: 'transparent',
+        },
+      }}
             >
               <FontAwesomeIcon
                 icon={isCondensedView ? faExpand : faCompress}>
