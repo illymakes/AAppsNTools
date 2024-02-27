@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import { createTheme, ThemeProvider, CssBaseline, Container, Grid, Typography, Box, Modal } from '@mui/material';
+import { createTheme, ThemeProvider, CssBaseline, Container, Grid, Typography, Box, Modal, IconButton } from '@mui/material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes, faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faTimes, faHeart, faExpand, faCompress } from '@fortawesome/free-solid-svg-icons';
 import TileCard from './TileCard';
 import TopAppBar from './TopAppBar';
 import Overlay from './Overlay';
@@ -30,21 +30,21 @@ const BottomMenuOverlay = ({ open, onClose }) => {
         }}
       >
         <img src={isDarkMode ? logoDarkMode : logoLightMode} alt="Logo" className="modalLogo" />
-        <button 
-        className="modalCloseButton" 
-        onClick={onClose}
-        style={{
-          position: 'absolute',
-          top: 8,
-          right: 16,
-          background: 'none',
-          border: 'none',
-          cursor: 'pointer',
-          padding: 0,
-        }}
+        <button
+          className="modalCloseButton"
+          onClick={onClose}
+          style={{
+            position: 'absolute',
+            top: 8,
+            right: 16,
+            background: 'none',
+            border: 'none',
+            cursor: 'pointer',
+            padding: 0,
+          }}
         >
           &times;
-          </button>
+        </button>
         <Typography variant="h6" className="modalHeader">illymakes</Typography>
         <Typography className="modalBody">This app was made with ❤️ by illymakes.</Typography>
       </Box>
@@ -64,6 +64,7 @@ function App() {
   const [overlayOpen, setOverlayOpen] = useState(false);
   const [selectedData, setSelectedData] = useState(null);
   const [bottomMenuOverlayOpen, setBottomMenuOverlayOpen] = useState(false);
+  const [isCondensedView, setIsCondensedView] = useState(false);
 
 
   useEffect(() => {
@@ -287,6 +288,15 @@ function App() {
             </div>
           )}
           <Box sx={{ pt: '32px', pb: '32px' }}>
+            <IconButton
+              className="view-toggle-btn"
+              variant="contained"
+              onClick={() => setIsCondensedView(!isCondensedView)}
+            >
+              <FontAwesomeIcon
+                icon={isCondensedView ? faExpand : faCompress}>
+              </FontAwesomeIcon>
+            </IconButton>
             <Container maxWidth="xl">
               <Grid container spacing={2} justifyContent="center">
                 {filteredData.map((data, index) => (
@@ -304,6 +314,8 @@ function App() {
                       shortSummary={data.shortSummary}
                       key={data.id}
                       onClick={() => handleTileClick(data)}
+                      isCondensedView={isCondensedView}
+                      imageIcon={data.imageIcon}
                     />
                   </Grid>
                 ))}

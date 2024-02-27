@@ -299,3 +299,4 @@ button:focus-visible {
 [data-theme='dark'] .modalCloseButton:hover {
   color: var(--accent-color-dark);
 }
+
