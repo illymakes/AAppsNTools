@@ -56,10 +56,34 @@ const TileCard = ({ title, image, year, category, shortSummary, imageIcon, darkM
     if (isCondensedView) {
         return (
             <Card
+                sx={{
+                    borderRadius: "10px",
+                    transition: "transform 0.3s ease-in-out",
+                    '&:hover': {
+                        transform: 'scale(1.05)',
+                        boxShadow: '0px 0px 20px rgba(0,0,0,0.2)',
+                    },
+                    overflow: 'hidden',
+                    width: '100%',
+                    height: '150px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between',
+                    position: 'relative',
+                }}
                 onClick={onClick}
             >
-                <CardContent>
-                <img src={imageIcon} alt="icon" style={{ width: 60, height: 60, borderRadius: '10%' }} />
+                <CardContent
+                    className="condensed-card-div"
+                    sx={{
+                        pb: 0,
+                        m: 0,
+                    }}
+                    >
+                    <div className="condensed-icon-div">
+                <img src={imageIcon} alt="icon" style={{ width: 40, height: 40, borderRadius: '10%' }} />
+                        </div>
+                    <div className="condensed-info-div">
                     <Typography variant="h6" component="div">
                         {title}
                     </Typography>
@@ -72,6 +96,7 @@ const TileCard = ({ title, image, year, category, shortSummary, imageIcon, darkM
                     <Typography variant="body2" sx={{ color: 'text.primary', overflow: 'hidden', textOverflow: 'ellipsis', display: '-webkit-box', WebkitLineClamp: '3', WebkitBoxOrient: 'vertical' }}>
                         {shortSummary}
                     </Typography>
+                        </div>
                 </CardContent>
             </Card>
         );
