@@ -59,8 +59,18 @@ const TileCard = ({ title, image, year, category, shortSummary, imageIcon, darkM
                 onClick={onClick}
             >
                 <CardContent>
+                <img src={imageIcon} alt="icon" style={{ width: 60, height: 60, borderRadius: '10%' }} />
                     <Typography variant="h6" component="div">
                         {title}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary" gutterBottom>
+                        {year}
+                    </Typography>
+                    <Typography variant="body2" gutterBottom sx={getCategoryStyle(category)}>
+                        {category}
+                    </Typography>
+                    <Typography variant="body2" sx={{ color: 'text.primary', overflow: 'hidden', textOverflow: 'ellipsis', display: '-webkit-box', WebkitLineClamp: '3', WebkitBoxOrient: 'vertical' }}>
+                        {shortSummary}
                     </Typography>
                 </CardContent>
             </Card>
@@ -109,7 +119,6 @@ const TileCard = ({ title, image, year, category, shortSummary, imageIcon, darkM
                     flexDirection: 'column',
                     justifyContent: 'space-between',
                 }}>
-                    <img src={imageIcon} alt="icon" style={{ width: 60, height: 60, borderRadius: '10%' }} />
                     <Typography gutterBottom variant="h5" component="div" sx={{ color: 'text.primary' }}>
                         {title}
                     </Typography>
