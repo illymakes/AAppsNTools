@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { createTheme, ThemeProvider, CssBaseline, Container, Grid, Typography, Box } from '@mui/material';
+import { createTheme, ThemeProvider, CssBaseline, Container, Grid, Typography, Box, Modal } from '@mui/material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes, faHeart } from '@fortawesome/free-solid-svg-icons';
 import TileCard from './TileCard';
@@ -7,6 +7,50 @@ import TopAppBar from './TopAppBar';
 import Overlay from './Overlay';
 import './index.css';
 import { FavoritesProvider } from './FavoritesContext';
+import PropTypes from 'prop-types';
+import { useTheme } from '@mui/material/styles';
+
+const BottomMenuOverlay = ({ open, onClose }) => {
+  const theme = useTheme();
+  const isDarkMode = theme.palette.mode === 'dark';
+
+  const logoDarkMode = 'path/to/dark-mode-logo.svg';
+  const logoLightMode = 'path/to/light-mode-logo.svg';
+
+  return (
+    <Modal open={open} onClose={onClose} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <Box
+        className="modalContent"
+        sx={{
+          position: 'relative',
+          backgroundColor: isDarkMode ? '#121212' : '#fff',
+          color: isDarkMode ? '#e0e0e0' : '#000',
+          p: 2,
+          boxSizing: 'border-box',
+        }}
+      >
+        <img src={isDarkMode ? logoDarkMode : logoLightMode} alt="Logo" className="modalLogo" />
+        <button 
+        className="modalCloseButton" 
+        onClick={onClose}
+        style={{
+          position: 'absolute',
+          top: 8,
+          right: 16,
+          background: 'none',
+          border: 'none',
+          cursor: 'pointer',
+          padding: 0,
+        }}
+        >
+          &times;
+          </button>
+        <Typography variant="h6" className="modalHeader">illymakes</Typography>
+        <Typography className="modalBody">This app was made with ❤️ by illymakes.</Typography>
+      </Box>
+    </Modal>
+  );
+}
 
 function App() {
   const [darkMode, setDarkMode] = useState(true);
@@ -19,6 +63,8 @@ function App() {
   const [sortOrder, setSortOrder] = useState('asc');
   const [overlayOpen, setOverlayOpen] = useState(false);
   const [selectedData, setSelectedData] = useState(null);
+  const [bottomMenuOverlayOpen, setBottomMenuOverlayOpen] = useState(false);
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -107,6 +153,12 @@ function App() {
   };
 
   const [showSearch, setShowSearch] = useState(false);
+
+  const handleBottomMenuTextClick = (event) => {
+    event.stopPropagation();
+    setBottomMenuOverlayOpen(!bottomMenuOverlayOpen);
+  };
+
 
   const theme = createTheme({
     palette: {
@@ -228,7 +280,7 @@ function App() {
                   <a href="#">Link 2</a>
                   <a href="#">Link 3</a>
                 </div>
-                <div className="bottom-menu-text">
+                <div className="bottom-menu-text" onClick={handleBottomMenuTextClick}>
                   Made with <FontAwesomeIcon icon={faHeart} /> by illymakes.
                 </div>
               </div>
@@ -259,6 +311,9 @@ function App() {
             </Container>
           </Box>
         </div>
+        <BottomMenuOverlay
+          open={bottomMenuOverlayOpen}
+          onClose={() => setBottomMenuOverlayOpen(false)} />
         <Overlay
           open={overlayOpen}
           onClose={closeOverlay}
@@ -269,5 +324,10 @@ function App() {
     </FavoritesProvider>
   );
 }
+
+App.propTypes = {
+  open: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+};
 
 export default App;

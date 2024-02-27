@@ -56,8 +56,8 @@
   left: 0;
   width: 250px;
   height: 100vh;
-  background: linear-gradient(90deg, rgba(18,18,18,1) 0%, rgba(24,24,24,1) 100%);
-  box-shadow: 3px 0px 10px rgba(0,0,0,0.5);
+  background: linear-gradient(90deg, rgba(18, 18, 18, 1) 0%, rgba(24, 24, 24, 1) 100%);
+  box-shadow: 3px 0px 10px rgba(0, 0, 0, 0.5);
   transform: translateX(-100%);
   transition: transform 0.3s ease-out;
   z-index: 110;
@@ -95,6 +95,11 @@
   text-align: center;
   font-size: 12px;
   font-family: "RobotoMono Regular", monospace;
+  cursor: pointer;
+}
+
+.slideMenu .bottom-menu-text:hover {
+  text-decoration: underline;
 }
 
 .slideMenu a:hover {
@@ -102,18 +107,19 @@
   color: #BB86FC;
 }
 
-[data-theme='dark'] .slideMenu, [data-theme='light'] .slideMenu {
+[data-theme='dark'] .slideMenu,
+[data-theme='light'] .slideMenu {
   transform: translateX(0);
 }
 
 .menuCloseButton {
   position: absolute;
   top: -1px;
-  right: -64px; 
+  right: -64px;
   background: none;
   border: none;
-  color: #ffffff; 
-  font-size: 24px; 
+  color: #ffffff;
+  font-size: 24px;
   cursor: pointer;
 }
 
@@ -227,4 +233,69 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+.modalContent {
+  background-color: var(--background-color-light);
+  color: var(--primary-text-color-light);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+
+[data-theme='dark'] .modalContent {
+  background-color: var(--background-color-dark);
+  color: var(--primary-text-color-dark);
+}
+
+.modalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "RobotoMono Regular", monospace;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.modalLogo {
+  width: 140px;
+  height: 140px;
+  margin-bottom: 14px;
+}
+
+.modalBody {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.modalCloseButton {
+  cursor: pointer;
+  float: right;
+  border: none;
+  background: transparent;
+  color: var(--secondary-text-color-light);
+  font-size: 24px;
+}
+
+[data-theme='dark'] .modalCloseButton {
+  color: var(--secondary-text-color-dark);
+}
+
+.modalCloseButton:hover {
+  color: var(--accent-color-light);
+}
+
+[data-theme='dark'] .modalCloseButton:hover {
+  color: var(--accent-color-dark);
 }
