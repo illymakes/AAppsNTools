@@ -2,9 +2,9 @@
     {
         "id": 1,
         "title": "The Great Gatsby",
-        "image": "./data/images/gg1.webp",
+        "image": "./data/images/gg_logo.webp",
         "imageIcon": "./data/images/gg_icon.webp",
-        "itemLogo": "./data/images/gg_logo.webp",
+        "itemLogo": "./data/images/gg_logo1.webp",
         "year": "1925",
         "category": "Books",
         "shortSummary": "A classic American novel capturing the essence of the Roaring Twenties and the pursuit of the American Dream.",

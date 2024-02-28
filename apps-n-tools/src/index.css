@@ -346,8 +346,14 @@ button:focus-visible {
 .view-toggle-btn {
   display: flex;
   flex-direction: row-reverse;
-  margin-right: 16px;
+  margin-right: 24px;
+  margin-bottom: 10px;
   z-index: 1000;
+  margin-top: 10px;
+}
+
+.bottom-spacer {
+  margin: 40px;
 }
 
 .condensed-card-div {

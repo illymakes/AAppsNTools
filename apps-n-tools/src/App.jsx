@@ -337,6 +337,7 @@ function App() {
                 ))}
               </Grid>
             </Container>
+            <div className="bottom-spacer"></div>
           </Box>
         </div>
         <BottomMenuOverlay
