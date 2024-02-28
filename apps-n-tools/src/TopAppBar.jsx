@@ -81,7 +81,13 @@ function TopAppBar({ darkMode, setDarkMode, categories, onFilterChange, onSearch
     };
 
     return (
-        <AppBar position="static" className="topAppBar">
+        <AppBar
+            position="sticky"
+            className="topAppBar"
+            sx={{
+                zIndex: theme => theme.zIndex.drawer + 1
+            }}
+        >
             <Toolbar className="topAppBar">
                 <IconButton edge="start" color="inherit" aria-label="menu" onClick={toggleMenu}>
                     <FontAwesomeIcon icon={faBars} className="icon" />

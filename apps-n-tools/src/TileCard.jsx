@@ -65,38 +65,60 @@ const TileCard = ({ title, image, year, category, shortSummary, imageIcon, darkM
                     },
                     overflow: 'hidden',
                     width: '100%',
-                    height: '150px',
+                    height: '200px',
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'space-between',
                     position: 'relative',
+                    '@media (max-width: 500px)': {
+                        height: '400px',
+                    }
                 }}
                 onClick={onClick}
             >
                 <CardContent
                     className="condensed-card-div"
                     sx={{
-                        pb: 0,
-                        m: 0,
+                        paddingBottom: '100px',
+                        marginBottom: '10px',
                     }}
-                    >
-                    <div className="condensed-icon-div">
-                <img src={imageIcon} alt="icon" style={{ width: 40, height: 40, borderRadius: '10%' }} />
+                >
+                    <div className="condensed-heart-icon-div">
+                        <div className="condensed-icon-div">
+                            <img src={imageIcon} alt="icon" style={{ width: 40, height: 40, borderRadius: '10%' }} />
                         </div>
+                        <div className="condensed-heart-div">
+                            <button
+                                onClick={toggleLike}
+                                style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '0px' }}>
+                                <FontAwesomeIcon
+                                    icon={liked ? faHeartSolid : faHeartRegular}
+                                    color={liked ? 'red' : 'grey'} />
+                            </button>
+                        </div>
+                    </div>
                     <div className="condensed-info-div">
-                    <Typography variant="h6" component="div">
-                        {title}
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary" gutterBottom>
-                        {year}
-                    </Typography>
-                    <Typography variant="body2" gutterBottom sx={getCategoryStyle(category)}>
-                        {category}
-                    </Typography>
-                    <Typography variant="body2" sx={{ color: 'text.primary', overflow: 'hidden', textOverflow: 'ellipsis', display: '-webkit-box', WebkitLineClamp: '3', WebkitBoxOrient: 'vertical' }}>
-                        {shortSummary}
-                    </Typography>
-                        </div>
+                        <Typography variant="h6" component="div">
+                            {title}
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary" gutterBottom>
+                            {year}
+                        </Typography>
+                        <Typography variant="body2" gutterBottom sx={getCategoryStyle(category)}>
+                            {category}
+                        </Typography>
+                        <Typography variant="body2" sx={{
+                            color: 'text.primary',
+                            overflow: 'hidden',
+                            textOverflow: 'ellipsis',
+                            display: '-webkit-box',
+                            WebkitLineClamp: '3',
+                            WebkitBoxOrient: 'vertical',
+                            mb: { xs: 2, sm: 2, md: 2, lg: 2, xl: 2 },
+                        }}>
+                            {shortSummary}
+                        </Typography>
+                    </div>
                 </CardContent>
             </Card>
         );

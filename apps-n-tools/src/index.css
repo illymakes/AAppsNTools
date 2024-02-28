@@ -3,23 +3,42 @@
     width: 8px;
 }
 
-::-webkit-scrollbar-track {
-    background: #a5a5a5;
+/* Dark Mode Scrollbars */
+[data-theme='dark'] ::-webkit-scrollbar-track {
+  background: #2A2A2A;
 }
 
-::-webkit-scrollbar-thumb {
-    background: #202020;
-    border-radius: 10px;
+[data-theme='dark'] ::-webkit-scrollbar-thumb {
+  background: #BB86FC;
+  border-radius: 10px;
 }
 
-::-webkit-scrollbar-thumb:hover {
-    background: #363636;
+[data-theme='dark'] ::-webkit-scrollbar-thumb:hover {
+  background: #3700B3;
 }
 
-/* For Firefox */
-* {
-    scrollbar-width: thin;
-    scrollbar-color: #202020 #a5a5a5;
+/* Firefox */
+[data-theme='dark'] {
+  scrollbar-color: #BB86FC #2A2A2A;
+}
+
+/* Light Mode Scrollbars */
+[data-theme='light'] ::-webkit-scrollbar-track {
+  background: #E0E0E0;
+}
+
+[data-theme='light'] ::-webkit-scrollbar-thumb {
+  background: #6200EE;
+  border-radius: 10px;
+}
+
+[data-theme='light'] ::-webkit-scrollbar-thumb:hover {
+  background: #9A67EA;
+}
+
+/* Firefox */
+[data-theme='light'] {
+  scrollbar-color: #6200EE #E0E0E0;
 }
 
 :root {
@@ -337,12 +356,27 @@ button:focus-visible {
   justify-content: space-evenly;
   margin-right: 10px;
   margin-left: 10px;
-  align-items: center;
+  padding-right: 2px;
+  padding-left: 2px;
 }
 
 .condensed-icon-div {
+  margin-bottom: 4px;
+}
+
+/* .condensed-heart-div {
   display: flex;
-  align-self: center;
+} */
+
+.condensed-heart-icon-div {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  margin-right: 18px;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.condensed-info-div {
+  height: 120px!important;
+  margin-bottom: 10px;
 }

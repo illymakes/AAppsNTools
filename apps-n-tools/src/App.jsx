@@ -18,7 +18,7 @@ const BottomMenuOverlay = ({ open, onClose }) => {
   const logoLightMode = 'path/to/light-mode-logo.svg';
 
   return (
-    <Modal open={open} onClose={onClose} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+    <Modal open={open} onClose={onClose} style={{ display: 'flex', zIndex: 2300, alignItems: 'center', justifyContent: 'center' }}>
       <Box
         className="modalContent"
         sx={{
@@ -27,6 +27,7 @@ const BottomMenuOverlay = ({ open, onClose }) => {
           color: isDarkMode ? '#e0e0e0' : '#000',
           p: 2,
           boxSizing: 'border-box',
+          zIndex: 2300,
         }}
       >
         <img src={isDarkMode ? logoDarkMode : logoLightMode} alt="Logo" className="modalLogo" />
@@ -66,6 +67,9 @@ function App() {
   const [bottomMenuOverlayOpen, setBottomMenuOverlayOpen] = useState(false);
   const [isCondensedView, setIsCondensedView] = useState(false);
 
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', darkMode ? 'dark' : 'light');
+  }, [darkMode]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -246,8 +250,8 @@ function App() {
     }
   };
 
-const hoverColor = theme.palette.mode === 'dark' ? '#BB86FC' : '#6200ee';
-  
+  const hoverColor = theme.palette.mode === 'dark' ? '#BB86FC' : '#6200ee';
+
   return (
     <FavoritesProvider>
       <ThemeProvider theme={theme}>
@@ -268,7 +272,7 @@ const hoverColor = theme.palette.mode === 'dark' ? '#BB86FC' : '#6200ee';
         />
         <div>
           {isMenuOpen && (
-            <div className="menuOverlay" onClick={() => setIsMenuOpen(false)}>
+            <div className="menuOverlay" onClick={() => setIsMenuOpen(false)} style={{ zIndex: 1800 }}>
               <div className={`slideMenu ${isMenuOpen ? 'open' : ''}`} style={{ transform: isMenuOpen ? 'translateX(0)' : 'translateX(-100%)' }}>
                 <button className="menuCloseButton" onClick={() => setIsMenuOpen(false)}>
                   <FontAwesomeIcon icon={faTimes} />
@@ -291,24 +295,24 @@ const hoverColor = theme.palette.mode === 'dark' ? '#BB86FC' : '#6200ee';
           )}
           <Box>
             <div className="view-toggle-btn">
-            <IconButton
-              className="expandButton"
-              variant="contained"
-              disableRipple
-              onClick={() => setIsCondensedView(!isCondensedView)}
-              sx={{
-        color: 'inherit',
-        '&:hover': {
-          color: hoverColor,
-          backgroundColor: 'transparent',
-        },
-      }}
-            >
-              <FontAwesomeIcon
-                icon={isCondensedView ? faExpand : faCompress}>
-              </FontAwesomeIcon>
-            </IconButton>
-              </div>
+              <IconButton
+                className="expandButton"
+                variant="contained"
+                disableRipple
+                onClick={() => setIsCondensedView(!isCondensedView)}
+                sx={{
+                  color: 'inherit',
+                  '&:hover': {
+                    color: hoverColor,
+                    backgroundColor: 'transparent',
+                  },
+                }}
+              >
+                <FontAwesomeIcon
+                  icon={isCondensedView ? faExpand : faCompress}>
+                </FontAwesomeIcon>
+              </IconButton>
+            </div>
             <Container maxWidth="xl">
               <Grid container spacing={2} justifyContent="center">
                 {filteredData.map((data, index) => (
@@ -337,12 +341,15 @@ const hoverColor = theme.palette.mode === 'dark' ? '#BB86FC' : '#6200ee';
         </div>
         <BottomMenuOverlay
           open={bottomMenuOverlayOpen}
-          onClose={() => setBottomMenuOverlayOpen(false)} />
+          onClose={() => setBottomMenuOverlayOpen(false)} 
+          style={{ zIndex: 2100 }}
+          />
         <Overlay
           open={overlayOpen}
           onClose={closeOverlay}
           data={selectedData || {}}
           setSearchQuery={setSearchQuery}
+          style={{ zIndex: 2200 }}
         />
       </ThemeProvider>
     </FavoritesProvider>
