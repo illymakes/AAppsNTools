@@ -11,9 +11,9 @@
         "description": "The Great Gatsby is a classic American novel written by F. Scott Fitzgerald, capturing the essence of the Roaring Twenties and the pursuit of the American Dream. Set in the summer of 1922, the story follows Jay Gatsby, a mysterious millionaire, and his obsession with Daisy Buchanan, a married woman from his past. Through themes of love, wealth, and illusion, Fitzgerald explores the decadence and moral decay of the Jazz Age.",
         "tags": ["American literature", "Roaring Twenties", "American Dream", "obsession"],
         "author": "F. Scott Fitzgerald",
-        "firstLink": "https://example.com/thegreatgatsby",
-        "secondLink": "https://example.com/thegreatgatsby/purchase",
-        "authorEmail": "#"
+        "firstLink": "https://www.gutenberg.org/ebooks/64317",
+        "secondLink": "https://www.gutenberg.org/ebooks/64317",
+        "authorEmail": "https://en.wikipedia.org/wiki/F._Scott_Fitzgerald"
     },
     {
         "id": 2,
@@ -27,9 +27,9 @@
         "description": "1984 is a dystopian novel written by George Orwell, depicting a totalitarian regime ruled by the Party and its enigmatic leader, Big Brother. Set in a bleak future where individuality is suppressed and truth is manipulated, the story follows Winston Smith, a disillusioned Party member who rebels against the oppressive regime. Through themes of surveillance, propaganda, and thought control, Orwell warns of the dangers of authoritarianism and the erosion of freedom.",
         "tags": ["dystopian fiction", "totalitarianism", "surveillance", "propaganda"],
         "author": "George Orwell",
-        "firstLink": "https://example.com/1984",
-        "secondLink": "https://example.com/1984/purchase",
-        "authorEmail": "#"
+        "firstLink": "https://www.george-orwell.org/1984",
+        "secondLink": "https://www.george-orwell.org/1984",
+        "authorEmail": "https://en.wikipedia.org/wiki/George_Orwell"
     },
     {
         "id": 3,
@@ -43,9 +43,9 @@
         "description": "To Kill a Mockingbird is a Pulitzer Prize-winning novel by Harper Lee, set in the racially charged atmosphere of the Deep South during the 1930s. Through the eyes of young Scout Finch, the story explores themes of racial injustice, moral growth, and empathy. As her father, Atticus Finch, defends a black man falsely accused of rape, Scout learns valuable lessons about compassion and the complexities of human nature.",
         "tags": ["racial injustice", "Southern literature", "coming-of-age", "empathy"],
         "author": "Harper Lee",
-        "firstLink": "https://example.com/tokillamockingbird",
-        "secondLink": "https://example.com/tokillamockingbird/purchase",
-        "authorEmail": "#"
+        "firstLink": "https://a.co/d/7dQSxwz",
+        "secondLink": "https://a.co/d/7dQSxwz",
+        "authorEmail": "https://en.wikipedia.org/wiki/Harper_Lee"
     },
     {
         "id": 4,
@@ -59,9 +59,9 @@
         "description": "Pride and Prejudice is a beloved novel by Jane Austen, hailed as one of the greatest works of English literature. Set in the early 19th century, the story follows the spirited Elizabeth Bennet as she navigates the social norms of Georgian society and confronts her own prejudices. Through sparkling wit and keen observation, Austen explores themes of love, marriage, and the pursuit of happiness.",
         "tags": ["romantic fiction", "Regency era", "social commentary", "wit"],
         "author": "Jane Austen",
-        "firstLink": "https://example.com/prideandprejudice",
-        "secondLink": "https://example.com/prideandprejudice/purchase",
-        "authorEmail": "#"
+        "firstLink": "https://www.gutenberg.org/ebooks/42671",
+        "secondLink": "https://www.gutenberg.org/ebooks/42671",
+        "authorEmail": "https://en.wikipedia.org/wiki/Jane_Austen"
     },
     {
         "id": 5,
@@ -75,8 +75,8 @@
         "description": "The Catcher in the Rye is a seminal novel by J.D. Salinger, capturing the angst and alienation of adolescence in post-World War II America. Narrated by the rebellious Holden Caulfield, the story follows his journey through New York City after being expelled from prep school. Through Holden's cynical and disillusioned voice, Salinger explores themes of identity, authenticity, and the loss of innocence.",
         "tags": ["coming-of-age", "alienation", "youth culture", "identity"],
         "author": "J.D. Salinger",
-        "firstLink": "https://example.com/thecatcherintherye",
-        "secondLink": "https://example.com/thecatcherintherye/purchase",
-        "authorEmail": "#"
+        "firstLink": "https://archive.org/details/1_20191103_20191103_1326",
+        "secondLink": "https://archive.org/details/1_20191103_20191103_1326",
+        "authorEmail": "https://en.wikipedia.org/wiki/J._D._Salinger"
     }
 ]

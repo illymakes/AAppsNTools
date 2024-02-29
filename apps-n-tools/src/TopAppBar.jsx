@@ -23,7 +23,7 @@ function TopAppBar({ darkMode, setDarkMode, categories, onFilterChange, onSearch
 
     const handleFavoriteItemClick = (fav) => {
         onFavoriteSelect(fav);
-        setFavoritesAnchorEl(null); // Close the favorites menu
+        setFavoritesAnchorEl(null);
     };
 
     const handleFilterMenuClick = (event) => {
@@ -93,7 +93,7 @@ function TopAppBar({ darkMode, setDarkMode, categories, onFilterChange, onSearch
                     <FontAwesomeIcon icon={faBars} className="icon" />
                 </IconButton>
                 <Typography variant="h6" style={{ flexGrow: 1, display: "flex", alignItems: "center" }}>
-                    <a href="#" style={{ display: "flex", alignItems: "center", textDecoration: "none", color: "inherit" }}>
+                    <a href="/" style={{ display: "flex", alignItems: "center", textDecoration: "none", color: "inherit" }}>
                         <img src="src/assets/rocket-ship-svg.svg" className="logo" alt="Logo"></img>
                         AAppsNTools
                     </a>
@@ -131,7 +131,7 @@ function TopAppBar({ darkMode, setDarkMode, categories, onFilterChange, onSearch
                             <div
                                 onClick={() => onSortChange('asc')}
                                 style={{
-                                    marginRight: 10, // Add some space between the icons
+                                    marginRight: 10,
                                     padding: '2px',
                                     background: sortOrder === 'asc' ? 'rgba(0, 0, 0, 0.3)' : 'none',
                                     borderRadius: '4px',
@@ -226,7 +226,7 @@ function TopAppBar({ darkMode, setDarkMode, categories, onFilterChange, onSearch
                 >
                     <FontAwesomeIcon
                         icon={darkMode ? faSun : faMoon}
-                        style={{ width: '24px', height: '24px' }} // Fixed size for the icon itself
+                        style={{ width: '24px', height: '24px' }}
                     />
                 </IconButton>
             </Toolbar>

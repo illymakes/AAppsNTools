@@ -11,9 +11,9 @@
         "description": "Inception is a mind-bending science fiction thriller that explores the concept of shared dreaming and subconscious manipulation. Directed by Christopher Nolan, the film follows a skilled thief who enters the dreams of others to steal secrets. As layers of reality blur, the protagonist faces his own inner demons and questions the nature of reality itself.",
         "tags": ["science fiction", "action", "dreams", "reality"],
         "author": "Christopher Nolan",
-        "firstLink": "https://example.com/inception",
-        "secondLink": "https://example.com/inception/purchase",
-        "authorEmail": "#"
+        "firstLink": "https://www.warnerbros.com/movies/inception",
+        "secondLink": "https://www.amazon.com/Inception-Leonardo-DiCaprio/dp/B0047WJ11G",
+        "authorEmail": "https://en.wikipedia.org/wiki/Christopher_Nolan"
     },
     {
         "id": 2,
@@ -27,9 +27,9 @@
         "description": "The Matrix is a groundbreaking science fiction film that revolutionized the genre with its innovative special effects and philosophical themes. Directed by the Wachowskis, the story follows a computer hacker who discovers the true nature of reality—a simulated world created by sentient machines to subdue humanity. As he joins a rebellion against the machines, he must confront the boundaries of perception and free will.",
         "tags": ["science fiction", "action", "virtual reality", "philosophy"],
         "author": "The Wachowskis",
-        "firstLink": "https://example.com/thematrix",
-        "secondLink": "https://example.com/thematrix/purchase",
-        "authorEmail": "#"
+        "firstLink": "https://www.warnerbros.com/movies/matrix",
+        "secondLink": "https://www.amazon.com/gp/video/detail/B0094K35S6/ref=atv_dp_share_cu_r",
+        "authorEmail": "https://en.wikipedia.org/wiki/The_Wachowskis"
     },
     {
         "id": 3,
@@ -43,9 +43,9 @@
         "description": "The Shawshank Redemption is a poignant drama directed by Frank Darabont, based on a novella by Stephen King. Set within the confines of Shawshank State Penitentiary, the film tells the story of Andy Dufresne, a banker wrongfully convicted of murder. Through perseverance and friendship with fellow inmate Red, Andy maintains hope and resilience in the face of adversity.",
         "tags": ["drama", "friendship", "redemption", "hope"],
         "author": "Frank Darabont",
-        "firstLink": "https://example.com/shawshankredemption",
-        "secondLink": "https://example.com/shawshankredemption/purchase",
-        "authorEmail": "#"
+        "firstLink": "https://www.warnerbros.com/movies/shawshank-redemption",
+        "secondLink": "https://www.amazon.com/gp/video/detail/B001EBV0OY/ref=atv_dp_share_cu_r",
+        "authorEmail": "https://en.wikipedia.org/wiki/Frank_Darabont"
     },
     {
         "id": 4,
@@ -59,9 +59,9 @@
         "description": "Pulp Fiction is a stylized crime film directed by Quentin Tarantino, known for its nonlinear narrative and eclectic characters. Set in Los Angeles, the film weaves multiple interconnected storylines involving mobsters, hitmen, and boxers. Through its witty dialogue and unconventional storytelling, Pulp Fiction explores themes of morality, violence, and redemption.",
         "tags": ["crime", "dialogue", "nonlinear narrative", "morality"],
         "author": "Quentin Tarantino",
-        "firstLink": "https://example.com/pulpfiction",
-        "secondLink": "https://example.com/pulpfiction/purchase",
-        "authorEmail": "#"
+        "firstLink": "https://www.miramax.com/movie/pulp-fiction/",
+        "secondLink": "https://play.max.com/movie/04d2059a-0056-4693-93cd-5fd1b7b02d4e",
+        "authorEmail": "https://en.wikipedia.org/wiki/Quentin_Tarantino"
     },
     {
         "id": 5,
@@ -75,8 +75,8 @@
         "description": "The Godfather is a classic crime drama directed by Francis Ford Coppola, based on the novel by Mario Puzo. Set in the post-World War II era, the film follows the Corleone crime family and their patriarch, Don Vito Corleone. As he navigates the treacherous world of organized crime, Vito must balance family loyalty with the ruthless pursuit of power.",
         "tags": ["crime", "mafia", "family", "power"],
         "author": "Francis Ford Coppola",
-        "firstLink": "https://example.com/thegodfather",
-        "secondLink": "https://example.com/thegodfather/purchase",
-        "authorEmail": "#"
+        "firstLink": "https://www.paramountpictures.com/movies/godfather-collection",
+        "secondLink": "https://www.amazon.com/gp/video/detail/B001GJ19F4/ref=atv_dp_share_cu_r",
+        "authorEmail": "https://en.wikipedia.org/wiki/Francis_Ford_Coppola"
     }
 ]

@@ -14,9 +14,6 @@ const BottomMenuOverlay = ({ open, onClose }) => {
   const theme = useTheme();
   const isDarkMode = theme.palette.mode === 'dark';
 
-  const logoDarkMode = 'path/to/dark-mode-logo.svg';
-  const logoLightMode = 'path/to/light-mode-logo.svg';
-
   return (
     <Modal open={open} onClose={onClose} style={{ display: 'flex', zIndex: 2300, alignItems: 'center', justifyContent: 'center' }}>
       <Box
@@ -30,7 +27,7 @@ const BottomMenuOverlay = ({ open, onClose }) => {
           zIndex: 2300,
         }}
       >
-        <img src={isDarkMode ? logoDarkMode : logoLightMode} alt="Logo" className="modalLogo" />
+        <img src="./data/images/illymakes_logo.webp" alt="Logo" className="modalLogo" />
         <button
           className="modalCloseButton"
           onClick={onClose}
@@ -46,8 +43,7 @@ const BottomMenuOverlay = ({ open, onClose }) => {
         >
           &times;
         </button>
-        <Typography variant="h6" className="modalHeader">illymakes</Typography>
-        <Typography className="modalBody">This app was made with ❤️ by illymakes.</Typography>
+        <Typography className="modalBody">This app was made with ❤️ by&nbsp;<a href="https://illymakes.com/">illymakes</a>.</Typography>
       </Box>
     </Modal>
   );
@@ -281,11 +277,17 @@ function App() {
                   <img src="src/assets/rocket-ship-svg.svg" className="logo-menu"></img>AAppsNTools
                 </Typography>
                 <div className="top-menu-link">
-                  <a href="#">Link 1</a>
+                  <a href="https://illymakes.com/">Portfolio</a>
                 </div>
                 <div className="lower-menu-links">
-                  <a href="#">Link 2</a>
-                  <a href="#">Link 3</a>
+                  <a href="https://github.com/illymakes">Github</a>
+                  <a href="https://dribbble.com/illymakes">Dribbble</a>
+                  <a href="https://behance.net/illymakes">Behance</a>
+                  <a href="https://www.linkedin.com/in/sarah-davison/">LinkedIn</a>
+                  <a href="https://ko-fi.com/illymakes">Ko-Fi</a>
+                  <a href="https://illymakes.threadless.com/">Threadless</a>
+                  <a href="https://instagram.com/illy.makes">Instagram</a>
+                  <a href="https://www.threads.net/@illestsarah23">Threads</a>
                 </div>
                 <div className="bottom-menu-text" onClick={handleBottomMenuTextClick}>
                   Made with <FontAwesomeIcon icon={faHeart} /> by illymakes.

@@ -165,8 +165,16 @@ const TileCard = ({ title, image, year, category, shortSummary, imageIcon, darkM
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'space-between',
+                    paddingTop: '0px',
                 }}>
-                    <Typography gutterBottom variant="h5" component="div" sx={{ color: 'text.primary' }}>
+                    <Typography 
+                    gutterBottom variant="h5" 
+                    component="div" 
+                    sx={{ 
+                        color: 'text.primary',
+                         
+                        }}
+                        >
                         {title}
                     </Typography>
                     <Typography variant="body2" color="text.secondary" component="div">

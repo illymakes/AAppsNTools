@@ -152,7 +152,7 @@ const Overlay = ({ open, onClose, data, darkMode, setSearchQuery }) => {
           ))}
         </Box>
         <Typography sx={{ mt: 2 }}>
-          Author: <Link href={`mailto:${authorEmail}`}>{author}</Link>
+          Author: <Link href={`${authorEmail}`}>{author}</Link>
         </Typography>
       </Box>
     </Modal>
