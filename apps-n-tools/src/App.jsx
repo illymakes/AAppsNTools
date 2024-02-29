@@ -27,7 +27,7 @@ const BottomMenuOverlay = ({ open, onClose }) => {
           zIndex: 2300,
         }}
       >
-        <img src="./data/images/illymakes_logo.webp" alt="Logo" className="modalLogo" />
+        <img src="./data/images/illymakes_logo.png" alt="Logo" className="modalLogo" />
         <button
           className="modalCloseButton"
           onClick={onClose}

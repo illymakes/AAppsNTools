@@ -3,43 +3,25 @@
     width: 8px;
 }
 
-/* Dark Mode Scrollbars */
-[data-theme='dark'] ::-webkit-scrollbar-track {
-  background: #2A2A2A;
-}
-
 [data-theme='dark'] ::-webkit-scrollbar-thumb {
-  background: #BB86FC;
+  background: #3d3d3d;
   border-radius: 10px;
 }
 
 [data-theme='dark'] ::-webkit-scrollbar-thumb:hover {
-  background: #3700B3;
+  background: #BB86FC;
 }
 
-/* Firefox */
-[data-theme='dark'] {
-  scrollbar-color: #BB86FC #2A2A2A;
-}
-
-/* Light Mode Scrollbars */
-[data-theme='light'] ::-webkit-scrollbar-track {
-  background: #E0E0E0;
-}
 
 [data-theme='light'] ::-webkit-scrollbar-thumb {
-  background: #6200EE;
+  background: #a5a5a5;
   border-radius: 10px;
 }
 
 [data-theme='light'] ::-webkit-scrollbar-thumb:hover {
-  background: #9A67EA;
+  background: #BB86FC;
 }
 
-/* Firefox */
-[data-theme='light'] {
-  scrollbar-color: #6200EE #E0E0E0;
-}
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -258,11 +240,6 @@ button:hover {
   border-color: #646cff;
 }
 
-/* button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-} */
-
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
@@ -381,7 +358,7 @@ button:focus-visible {
   height: 100%;
 }
 
-/* .condensed-card-title-div {
+.condensed-card-title-div {
   display: flex;
   flex-direction: column;
 }
@@ -389,4 +366,4 @@ button:focus-visible {
 .condensed-card-body-div {
   display: flex;
   flex-direction: column;
-} */
+}

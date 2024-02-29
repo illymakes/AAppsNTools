@@ -77,6 +77,7 @@ const TileCard = ({ title, image, year, category, shortSummary, imageIcon, darkM
         };
     };
 
+    //fix the text alignment issues with the condensed cards
     if (isCondensedView) {
         return (
             <Card
@@ -89,7 +90,7 @@ const TileCard = ({ title, image, year, category, shortSummary, imageIcon, darkM
                     },
                     overflow: 'hidden',
                     width: '100%',
-                    height: '200px',
+                    height: '190px',
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'space-between',
@@ -101,23 +102,16 @@ const TileCard = ({ title, image, year, category, shortSummary, imageIcon, darkM
                         height: '180px',
                     },
                     '@media (max-width: 1600px)': {
-                        height: '200px',
+                        height: '190px',
                     },
                     '@media (max-width: 1920px)': {
-                        height: '200px',
+                        height: '190px',
                     },
                 }}
                 onClick={onClick}
             >
                 <CardContent
                     className="condensed-card-div"
-                    sx={{
-                        paddingBottom: '150px',
-                        marginBottom: '10px',
-                        '@media (max-width: 965px)': {
-                            paddingBottom: '150px',
-                        },
-                    }}
                 >
                     <div className="condensed-heart-icon-div">
                         <div className="condensed-icon-div">
@@ -153,32 +147,32 @@ const TileCard = ({ title, image, year, category, shortSummary, imageIcon, darkM
                                 }}>
                                 {title}
                             </Typography>
-                            <div clasName="condensed-card-body-div">
-                                <div className="condensed-card-body-div-cat-year" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                    <Typography variant="body2" color="text.secondary" component="div">
-                                        {year}
-                                    </Typography>
-                                    <Typography variant="body2" component="div" sx={getCategoryStyle(category)}>
-                                        {category}
-                                    </Typography>
-                                </div>
-                                <div className="consensed-card-short-summary">
-                                    <Typography variant="body2"
-                                        sx={{
-                                            color: 'text.primary',
-                                            display: '-webkit-box',
-                                            overflow: 'hidden',
-                                            textOverflow: 'ellipsis',
-                                            WebkitBoxOrient: 'vertical',
-                                            WebkitLineClamp: 3,
-                                            width: '100%',
-                                            '@media (max-width: 290px)': {
-                                                marginBottom: '16px',
-                                            },
-                                        }}>
-                                        {shortSummary}
-                                    </Typography>
-                                </div>
+                        </div>
+                        <div className="condensed-card-body-div">
+                            <div className="condensed-card-body-div-cat-year" style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                <Typography variant="body2" color="text.secondary" component="div">
+                                    {year}
+                                </Typography>
+                                <Typography variant="body2" component="div" sx={getCategoryStyle(category)}>
+                                    {category}
+                                </Typography>
+                            </div>
+                            <div className="condensed-card-short-summary">
+                                <Typography variant="body2"
+                                    sx={{
+                                        color: 'text.primary',
+                                        display: '-webkit-box',
+                                        overflow: 'hidden',
+                                        textOverflow: 'ellipsis',
+                                        WebkitBoxOrient: 'vertical',
+                                        WebkitLineClamp: 3,
+                                        width: '100%',
+                                        '@media (max-width: 290px)': {
+                                            marginBottom: '16px',
+                                        },
+                                    }}>
+                                    {shortSummary}
+                                </Typography>
                             </div>
                         </div>
                     </div>
@@ -248,7 +242,7 @@ const TileCard = ({ title, image, year, category, shortSummary, imageIcon, darkM
                             {title}
                         </Typography>
                     </div>
-                    <div clasName="card-body-div">
+                    <div className="card-body-div">
                         <div className="card-body-div-cat-year" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                             <Typography variant="body2" color="text.secondary" component="div">
                                 {year}
