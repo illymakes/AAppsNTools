@@ -1,6 +1,11 @@
+html {
+  overflow-x: hidden;
+}
+
 /* For WebKit (Chrome, Edge, Safari) */
 ::-webkit-scrollbar {
     width: 8px;
+    z-index: 10;
 }
 
 [data-theme='dark'] ::-webkit-scrollbar-thumb {
@@ -79,7 +84,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 250px;
+  width: 280px;
   height: 100vh;
   background: linear-gradient(90deg, rgba(18, 18, 18, 1) 0%, rgba(24, 24, 24, 1) 100%);
   box-shadow: 3px 0px 10px rgba(0, 0, 0, 0.5);
@@ -197,6 +202,8 @@
 
 .topAppBar {
   vertical-align: middle;
+  z-index: 15;
+  width: 100vw;
 }
 
 .topAppBar .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline {

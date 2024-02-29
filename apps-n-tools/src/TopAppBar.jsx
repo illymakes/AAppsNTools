@@ -191,9 +191,7 @@ function TopAppBar({ darkMode, setDarkMode, categories, onFilterChange, onSearch
                     keepMounted
                     open={Boolean(favoritesAnchorEl)}
                     onClose={handleFavoritesClose}
-                    sx={{
-                        paddingRight: 10,
-                    }}
+                   
                 >
                     {favorites.length > 0 ? (
                         favorites.map((fav, index) => (
