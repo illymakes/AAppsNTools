@@ -375,9 +375,18 @@ button:focus-visible {
 }
 
 .condensed-info-div {
-  height: 100%;
-  margin-bottom: 1px;
   display: flex;
   flex-direction: column;
   align-content: space-between;
+  height: 100%;
 }
+
+/* .condensed-card-title-div {
+  display: flex;
+  flex-direction: column;
+}
+
+.condensed-card-body-div {
+  display: flex;
+  flex-direction: column;
+} */
