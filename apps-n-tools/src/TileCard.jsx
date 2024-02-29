@@ -94,9 +94,18 @@ const TileCard = ({ title, image, year, category, shortSummary, imageIcon, darkM
                     flexDirection: 'column',
                     justifyContent: 'space-between',
                     position: 'relative',
-                    '@media (max-width: 500px)': {
-                        height: '400px',
-                    }
+                    '@media (max-width: 965px)': {
+                        height: '180px',
+                    },
+                    '@media (max-width: 1273px)': {
+                        height: '180px',
+                    },
+                    '@media (max-width: 1600px)': {
+                        height: '200px',
+                    },
+                    '@media (max-width: 1920px)': {
+                        height: '200px',
+                    },
                 }}
                 onClick={onClick}
             >
@@ -128,6 +137,8 @@ const TileCard = ({ title, image, year, category, shortSummary, imageIcon, darkM
                                 component="div"
                                 ref={titleRefCondensed}
                                 sx={{
+                                    flexGrow: 0,
+                                    flexShrink: 0,
                                     color: 'text.primary',
                                     display: '-webkit-box',
                                     overflow: 'hidden',
@@ -139,12 +150,26 @@ const TileCard = ({ title, image, year, category, shortSummary, imageIcon, darkM
                             </Typography>
                         </div>
                         <div className="condensed-card-body-div">
-                            <Typography variant="body2" color="text.secondary" gutterBottom>
-                                {year}
-                            </Typography>
-                            <Typography variant="body2" gutterBottom sx={getCategoryStyle(category)}>
-                                {category}
-                            </Typography>
+                            <div
+                                className="card-body-div"
+                                style={{
+                                    display: 'flex',
+                                    justifyContent: 'space-between',
+                                    alignItems: 'center'
+                                }}>
+                                <Typography
+                                    variant="body2"
+                                    color="text.secondary"
+                                    gutterBottom>
+                                    {year}
+                                </Typography>
+                                <Typography
+                                    variant="body2"
+                                    gutterBottom
+                                    sx={getCategoryStyle(category)}>
+                                    {category}
+                                </Typography>
+                            </div>
                             <Typography variant="body2" sx={{
                                 color: 'text.primary',
                                 overflow: 'hidden',
@@ -225,12 +250,14 @@ const TileCard = ({ title, image, year, category, shortSummary, imageIcon, darkM
                         </Typography>
                     </div>
                     <div clasName="card-body-div">
-                        <Typography variant="body2" color="text.secondary" component="div">
-                            {year}
-                        </Typography>
-                        <Typography variant="body2" component="div" sx={getCategoryStyle(category)}>
-                            {category}
-                        </Typography>
+                        <div className="card-body-div-cat-year" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                            <Typography variant="body2" color="text.secondary" component="div">
+                                {year}
+                            </Typography>
+                            <Typography variant="body2" component="div" sx={getCategoryStyle(category)}>
+                                {category}
+                            </Typography>
+                        </div>
                         <Typography variant="body2"
                             sx={{
                                 color: 'text.primary',

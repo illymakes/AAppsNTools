@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { AppBar, Toolbar, Typography, IconButton, Menu, MenuItem, Checkbox, FormControlLabel, TextField } from '@mui/material';
+import { AppBar, Toolbar, Typography, IconButton, Menu, MenuItem, Checkbox, Tooltip, FormControlLabel, TextField } from '@mui/material';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faMagnifyingGlass, faFilter, faBars, faTimes, faSortAlphaDown, faSortAlphaUp, faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
@@ -89,9 +89,11 @@ function TopAppBar({ darkMode, setDarkMode, categories, onFilterChange, onSearch
             }}
         >
             <Toolbar className="topAppBar">
-                <IconButton edge="start" color="inherit" aria-label="menu" onClick={toggleMenu}>
-                    <FontAwesomeIcon icon={faBars} className="icon" />
-                </IconButton>
+                <Tooltip title={"Menu"}>
+                    <IconButton edge="start" color="inherit" aria-label="menu" onClick={toggleMenu}>
+                        <FontAwesomeIcon icon={faBars} className="icon" />
+                    </IconButton>
+                </Tooltip>
                 <Typography variant="h6" style={{ flexGrow: 1, display: "flex", alignItems: "center" }}>
                     <a href="/" style={{ display: "flex", alignItems: "center", textDecoration: "none", color: "inherit" }}>
                         <img src="src/assets/rocket-ship-svg.svg" className="logo" alt="Logo"></img>
@@ -113,12 +115,16 @@ function TopAppBar({ darkMode, setDarkMode, categories, onFilterChange, onSearch
                         }}
                     />
                 ) : null}
-                <IconButton color="inherit" onClick={showSearch ? closeSearchBar : toggleSearchBar}>
-                    {showSearch ? <FontAwesomeIcon icon={faTimes} /> : <FontAwesomeIcon icon={faMagnifyingGlass} className="search-icon" />}
-                </IconButton>
-                <IconButton color="inherit" onClick={handleFilterMenuClick}>
-                    <FontAwesomeIcon icon={faFilter} className="icon" />
-                </IconButton>
+                <Tooltip title={"Search Cards"}>
+                    <IconButton color="inherit" onClick={showSearch ? closeSearchBar : toggleSearchBar}>
+                        {showSearch ? <FontAwesomeIcon icon={faTimes} /> : <FontAwesomeIcon icon={faMagnifyingGlass} className="search-icon" />}
+                    </IconButton>
+                </Tooltip>
+                <Tooltip title={"Filter Cards"}>
+                    <IconButton color="inherit" onClick={handleFilterMenuClick}>
+                        <FontAwesomeIcon icon={faFilter} className="icon" />
+                    </IconButton>
+                </Tooltip>
                 <Menu
                     id="filter-menu"
                     anchorEl={filterAnchorEl}
@@ -174,9 +180,11 @@ function TopAppBar({ darkMode, setDarkMode, categories, onFilterChange, onSearch
                         </MenuItem>
                     ))}
                 </Menu>
-                <IconButton color="inherit" onClick={handleFavoritesClick}>
-                    <FontAwesomeIcon icon={faHeart} className="heart-icon" />
-                </IconButton>
+                <Tooltip title={"Favorite Cards"}>
+                    <IconButton color="inherit" onClick={handleFavoritesClick}>
+                        <FontAwesomeIcon icon={faHeart} className="heart-icon" />
+                    </IconButton>
+                </Tooltip>
                 <Menu
                     id="favorites-menu"
                     anchorEl={favoritesAnchorEl}
@@ -190,6 +198,7 @@ function TopAppBar({ darkMode, setDarkMode, categories, onFilterChange, onSearch
                     {favorites.length > 0 ? (
                         favorites.map((fav, index) => (
                             <MenuItem key={index} className={removingFav === fav.id ? 'fade-out' : ''} onClick={() => handleFavoriteItemClick(fav)}>
+
                                 <IconButton
                                     onClick={(e) => {
                                         e.stopPropagation();
@@ -213,22 +222,24 @@ function TopAppBar({ darkMode, setDarkMode, categories, onFilterChange, onSearch
                         <MenuItem onClick={handleFavoritesClose} disabled={true}>No Favorites</MenuItem>
                     )}
                 </Menu>
-                <IconButton
-                    color="inherit"
-                    onClick={() => setDarkMode(!darkMode)}
-                    sx={{
-                        display: 'inline-flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        width: 36,
-                        height: 36,
-                    }}
-                >
-                    <FontAwesomeIcon
-                        icon={darkMode ? faSun : faMoon}
-                        style={{ width: '24px', height: '24px' }}
-                    />
-                </IconButton>
+                <Tooltip title={darkMode ? "Light Mode" : "Dark Mode"}>
+                    <IconButton
+                        color="inherit"
+                        onClick={() => setDarkMode(!darkMode)}
+                        sx={{
+                            display: 'inline-flex',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            width: 36,
+                            height: 36,
+                        }}
+                    >
+                        <FontAwesomeIcon
+                            icon={darkMode ? faSun : faMoon}
+                            style={{ width: '24px', height: '24px' }}
+                        />
+                    </IconButton>
+                </Tooltip>
             </Toolbar>
         </AppBar>
     );
