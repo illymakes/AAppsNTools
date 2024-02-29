@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext, useRef } from 'react';
 import { Card, CardContent, CardMedia, Typography } from '@mui/material';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -6,9 +6,33 @@ import { faHeart as faHeartRegular } from '@fortawesome/free-regular-svg-icons';
 import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons';
 import { FavoritesContext } from './FavoritesContext';
 
+const adjustFontSizeToFit = (element, maxHeight) => {
+    let fontSize = parseInt(window.getComputedStyle(element).fontSize);
+    while (element.offsetHeight > maxHeight && fontSize > 22) {
+        fontSize--;
+        element.style.fontSize = `${fontSize}px`;
+    }
+};
+
 const TileCard = ({ title, image, year, category, shortSummary, imageIcon, darkMode, onClick, isCondensedView }) => {
     const { favorites, isFavorited, addFav, removeFav, updateTrigger } = useContext(FavoritesContext);
     const [liked, setLiked] = useState(false);
+    const titleRef = useRef(null);
+    const titleRefCondensed = useRef(null);
+
+    useEffect(() => {
+        if (titleRef.current) {
+            const maxHeight = 60;
+            adjustFontSizeToFit(titleRef.current, maxHeight);
+        }
+    }, [title]);
+
+    useEffect(() => {
+        if (titleRefCondensed.current) {
+            const maxHeight = 20;
+            adjustFontSizeToFit(titleRefCondensed.current, maxHeight);
+        }
+    }, [title]);
 
     useEffect(() => {
         const checkFavoriteStatus = async () => {
@@ -98,26 +122,41 @@ const TileCard = ({ title, image, year, category, shortSummary, imageIcon, darkM
                         </div>
                     </div>
                     <div className="condensed-info-div">
-                        <Typography variant="h6" component="div">
-                            {title}
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary" gutterBottom>
-                            {year}
-                        </Typography>
-                        <Typography variant="body2" gutterBottom sx={getCategoryStyle(category)}>
-                            {category}
-                        </Typography>
-                        <Typography variant="body2" sx={{
-                            color: 'text.primary',
-                            overflow: 'hidden',
-                            textOverflow: 'ellipsis',
-                            display: '-webkit-box',
-                            WebkitLineClamp: '3',
-                            WebkitBoxOrient: 'vertical',
-                            mb: { xs: 2, sm: 2, md: 2, lg: 2, xl: 2 },
-                        }}>
-                            {shortSummary}
-                        </Typography>
+                        <div className="condensed-card-title-div">
+                            <Typography
+                                variant="h6"
+                                component="div"
+                                ref={titleRefCondensed}
+                                sx={{
+                                    color: 'text.primary',
+                                    display: '-webkit-box',
+                                    overflow: 'hidden',
+                                    textOverflow: 'ellipsis',
+                                    WebkitBoxOrient: 'vertical',
+                                    WebkitLineClamp: 2,
+                                }}>
+                                {title}
+                            </Typography>
+                        </div>
+                        <div className="condensed-card-body-div">
+                            <Typography variant="body2" color="text.secondary" gutterBottom>
+                                {year}
+                            </Typography>
+                            <Typography variant="body2" gutterBottom sx={getCategoryStyle(category)}>
+                                {category}
+                            </Typography>
+                            <Typography variant="body2" sx={{
+                                color: 'text.primary',
+                                overflow: 'hidden',
+                                textOverflow: 'ellipsis',
+                                display: '-webkit-box',
+                                WebkitLineClamp: '3',
+                                WebkitBoxOrient: 'vertical',
+                                mb: { xs: 2, sm: 2, md: 2, lg: 2, xl: 2 },
+                            }}>
+                                {shortSummary}
+                            </Typography>
+                        </div>
                     </div>
                 </CardContent>
             </Card>
@@ -143,9 +182,8 @@ const TileCard = ({ title, image, year, category, shortSummary, imageIcon, darkM
                 <CardMedia
                     component="img"
                     sx={{
-                        width: '100%',
-                        display: 'flex',
-                        flexDirection: 'column',
+                        width: 'auto',
+                        height: '200px',
                         minHeight: '200px',
                     }}
                     image={image}
@@ -167,25 +205,45 @@ const TileCard = ({ title, image, year, category, shortSummary, imageIcon, darkM
                     justifyContent: 'space-between',
                     paddingTop: '0px',
                 }}>
-                    <Typography 
-                    gutterBottom variant="h5" 
-                    component="div" 
-                    sx={{ 
-                        color: 'text.primary',
-                         
-                        }}
-                        >
-                        {title}
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary" component="div">
-                        {year}
-                    </Typography>
-                    <Typography variant="body2" component="div" sx={getCategoryStyle(category)}>
-                        {category}
-                    </Typography>
-                    <Typography variant="body2" sx={{ color: 'text.primary' }}>
-                        {shortSummary}
-                    </Typography>
+                    <div className="card-title-div">
+                        <Typography
+                            gutterBottom variant="h5"
+                            component="div"
+                            ref={titleRef}
+                            sx={{
+                                flexGrow: 0,
+                                flexShrink: 0,
+                                flexBasis: 'auto',
+                                color: 'text.primary',
+                                display: '-webkit-box',
+                                overflow: 'hidden',
+                                textOverflow: 'ellipsis',
+                                WebkitBoxOrient: 'vertical',
+                                WebkitLineClamp: 2,
+                            }}>
+                            {title}
+                        </Typography>
+                    </div>
+                    <div clasName="card-body-div">
+                        <Typography variant="body2" color="text.secondary" component="div">
+                            {year}
+                        </Typography>
+                        <Typography variant="body2" component="div" sx={getCategoryStyle(category)}>
+                            {category}
+                        </Typography>
+                        <Typography variant="body2"
+                            sx={{
+                                color: 'text.primary',
+                                display: '-webkit-box',
+                                overflow: 'hidden',
+                                textOverflow: 'ellipsis',
+                                WebkitBoxOrient: 'vertical',
+                                WebkitLineClamp: 3,
+                                width: '100%',
+                            }}>
+                            {shortSummary}
+                        </Typography>
+                    </div>
                 </CardContent>
             </Card>
         );

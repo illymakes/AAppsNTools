@@ -352,14 +352,12 @@ button:focus-visible {
   margin-top: 10px;
 }
 
-.bottom-spacer {
-  margin: 40px;
-}
-
 .condensed-card-div {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: center;
+  align-content: center;
+  height: 100%;
   margin-right: 10px;
   margin-left: 10px;
   padding-right: 2px;
@@ -370,10 +368,6 @@ button:focus-visible {
   margin-bottom: 4px;
 }
 
-/* .condensed-heart-div {
-  display: flex;
-} */
-
 .condensed-heart-icon-div {
   display: flex;
   flex-direction: column;
@@ -383,6 +377,9 @@ button:focus-visible {
 }
 
 .condensed-info-div {
-  height: 120px!important;
-  margin-bottom: 10px;
+  height: 100%;
+  margin-bottom: 1px;
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
 }
