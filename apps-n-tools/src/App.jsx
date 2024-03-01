@@ -274,7 +274,7 @@ function App() {
                   <FontAwesomeIcon icon={faTimes} />
                 </button>
                 <Typography variant="h6" style={{ flexGrow: 1, display: "flex", alignItems: "center", marginBottom: "10px", marginTop: "10px" }}>
-                  <img src="src/assets/rocket-ship-svg.svg" className="logo-menu"></img>AAppsNTools
+                  <img src="./data/images/i_logo_png.png" className="logo-menu"></img>AAppsNTools
                 </Typography>
                 <div className="top-menu-link">
                   <a href="https://illymakes.com/">Portfolio</a>
@@ -360,10 +360,5 @@ function App() {
     </FavoritesProvider>
   );
 }
-
-App.propTypes = {
-  open: PropTypes.bool.isRequired,
-  onClose: PropTypes.func.isRequired,
-};
 
 export default App;

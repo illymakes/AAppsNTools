@@ -1,5 +1,3 @@
-//check that the favorites are working correctly at home
-
 import { openDB } from 'idb';
 
 async function initDB() {
@@ -24,7 +22,6 @@ export async function removeFavorite(id, category) {
 export async function checkFavorite(id, category) {
   const db = await initDB();
   const item = await db.get('favorites', [id, category]);
-  console.log("checkFavorite item: ", item);
   return !!item;
 }
 

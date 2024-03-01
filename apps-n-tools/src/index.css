@@ -4,8 +4,8 @@ html {
 
 /* For WebKit (Chrome, Edge, Safari) */
 ::-webkit-scrollbar {
-    width: 8px;
-    z-index: 10;
+  width: 8px;
+  z-index: 10;
 }
 
 [data-theme='dark'] ::-webkit-scrollbar-thumb {
@@ -373,4 +373,21 @@ button:hover {
 .condensed-card-body-div {
   display: flex;
   flex-direction: column;
+}
+
+.tileHeartIcon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.tileHeartIcon:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
 }
