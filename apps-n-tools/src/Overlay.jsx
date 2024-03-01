@@ -126,7 +126,6 @@ const Overlay = ({ open, onClose, data, darkMode, setSearchQuery }) => {
               </Typography>
             </Box>
           </Box>
-          <img src={itemLogo} alt="logo" style={{ maxWidth: 100, maxHeight: 100, alignSelf: 'flex-start' }} />
         </Box>
         <Typography sx={{ mt: 2 }}>{description}</Typography>
         {(category1 === 'video games' || category1 === 'movies') && isValid1stLink(firstLink) && (

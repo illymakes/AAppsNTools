@@ -19,6 +19,7 @@ const TileCard = ({ title, image, year, category, shortSummary, imageIcon, darkM
     const [liked, setLiked] = useState(false);
     const titleRef = useRef(null);
     const titleRefCondensed = useRef(null);
+    const [isHovered, setIsHovered] = useState(false);
 
     useEffect(() => {
         if (titleRef.current) {
@@ -42,6 +43,19 @@ const TileCard = ({ title, image, year, category, shortSummary, imageIcon, darkM
 
         checkFavoriteStatus();
     }, [title, category, isFavorited, favorites, updateTrigger]);
+
+    const buttonStyle = {
+        background: 'none',
+        border: 'none',
+        cursor: 'pointer',
+        padding: '0px',
+      };
+
+      const iconStyle = (isHovered) => ({
+        color: liked ? 'red' : 'grey',
+        textShadow: isHovered ? '0 0 10px rgba(255, 0, 0, 0.7), 0 0 20px rgba(255, 0, 0, 0.7), 0 0 30px rgba(255, 0, 0, 0.7)' : 'none',
+        transition: 'text-shadow 0.3s ease-in-out',
+      });
 
     const toggleLike = async (event) => {
         event.stopPropagation();
@@ -120,9 +134,13 @@ const TileCard = ({ title, image, year, category, shortSummary, imageIcon, darkM
                         <div className="condensed-heart-div">
                             <button
                                 onClick={toggleLike}
-                                style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '0px' }}>
+                                style={buttonStyle}
+                                onMouseEnter={() => setIsHovered(true)} 
+                                onMouseLeave={() => setIsHovered(false)}
+                                >
                                 <FontAwesomeIcon
                                     icon={liked ? faHeartSolid : faHeartRegular}
+                                    style={iconStyle(isHovered)}
                                     color={liked ? 'red' : 'grey'} />
                             </button>
                         </div>
@@ -208,13 +226,17 @@ const TileCard = ({ title, image, year, category, shortSummary, imageIcon, darkM
                     alt={title}
                 />
                 <div style={{ display: 'flex', justifyContent: 'flex-end', position: 'relative', top: '-46px', right: '8px' }}>
-                    <button
-                        onClick={toggleLike}
-                        style={{ background: 'none', border: 'none', cursor: 'pointer' }}>
-                        <FontAwesomeIcon
-                            icon={liked ? faHeartSolid : faHeartRegular}
-                            color={liked ? 'red' : 'grey'} />
-                    </button>
+                <button
+                                onClick={toggleLike}
+                                style={buttonStyle}
+                                onMouseEnter={() => setIsHovered(true)} 
+                                onMouseLeave={() => setIsHovered(false)}
+                                >
+                                <FontAwesomeIcon
+                                    icon={liked ? faHeartSolid : faHeartRegular}
+                                    style={iconStyle(isHovered)}
+                                    color={liked ? 'red' : 'grey'} />
+                            </button>
                 </div>
                 <CardContent sx={{
                     flexGrow: 1,
