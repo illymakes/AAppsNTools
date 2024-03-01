@@ -226,7 +226,7 @@ const TileCard = ({ title, image, year, category, shortSummary, imageIcon, darkM
                     alt={title}
                 />
                 <div style={{ display: 'flex', justifyContent: 'flex-end', position: 'relative', top: '-46px', right: '8px' }}>
-                <button
+                            <button
                                 onClick={toggleLike}
                                 style={buttonStyle}
                                 onMouseEnter={() => setIsHovered(true)} 
