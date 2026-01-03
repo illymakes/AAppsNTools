@@ -96,7 +96,7 @@ function TopAppBar({ darkMode, setDarkMode, categories, onFilterChange, onSearch
                 </Tooltip>
                 <Typography variant="h6" style={{ flexGrow: 1, display: "flex", alignItems: "center" }}>
                     <a href="/" style={{ display: "flex", alignItems: "center", textDecoration: "none", color: "inherit" }}>
-                        <img src="./data/images/i_logo_png.png" className="logo" alt="Logo"></img>
+                        <img src="./data/images/illymakes_logo_200px.png" className="logo" alt="Logo"></img>
                         AAppsNTools
                     </a>
                 </Typography>

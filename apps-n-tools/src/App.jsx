@@ -27,7 +27,7 @@ const BottomMenuOverlay = ({ open, onClose }) => {
           zIndex: 2300,
         }}
       >
-        <img src="./data/images/illymakes_logo.png" alt="Logo" className="modalLogo" />
+        <img src="./data/images/illymakes_logo_200px.png" alt="Logo" className="modalLogo" />
         <button
           className="modalCloseButton"
           onClick={onClose}
@@ -274,20 +274,19 @@ function App() {
                   <FontAwesomeIcon icon={faTimes} />
                 </button>
                 <Typography variant="h6" style={{ flexGrow: 1, display: "flex", alignItems: "center", marginBottom: "10px", marginTop: "10px" }}>
-                  <img src="./data/images/i_logo_png.png" className="logo-menu"></img>AAppsNTools
+                  <img src="./data/images/illymakes_logo_200px.png" className="logo-menu"></img>AAppsNTools
                 </Typography>
                 <div className="top-menu-link">
                   <a href="https://illymakes.com/">Portfolio</a>
                 </div>
                 <div className="lower-menu-links">
                   <a href="https://github.com/illymakes">Github</a>
-                  <a href="https://dribbble.com/illymakes">Dribbble</a>
                   <a href="https://behance.net/illymakes">Behance</a>
                   <a href="https://www.linkedin.com/in/sarah-davison/">LinkedIn</a>
                   <a href="https://ko-fi.com/illymakes">Ko-Fi</a>
                   <a href="https://illymakes.threadless.com/">Threadless</a>
                   <a href="https://instagram.com/illy.makes">Instagram</a>
-                  <a href="https://www.threads.net/@illestsarah23">Threads</a>
+                  <a href="https://www.tiktok.com/@illymakes">TikTok</a>
                 </div>
                 <div className="bottom-menu-text" onClick={handleBottomMenuTextClick}>
                   Made with <FontAwesomeIcon icon={faHeart} /> by illymakes.
