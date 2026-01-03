@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { AppBar, Toolbar, Typography, IconButton, Menu, MenuItem, Checkbox, Tooltip, FormControlLabel, TextField } from '@mui/material';
+import { AppBar, Toolbar, Typography, IconButton, Menu, MenuItem, Checkbox, Tooltip, FormControlLabel, TextField, useMediaQuery } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faMagnifyingGlass, faFilter, faBars, faTimes, faSortAlphaDown, faSortAlphaUp, faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
@@ -14,6 +15,9 @@ function TopAppBar({ darkMode, setDarkMode, categories, onFilterChange, onSearch
     const [searchQuery, setSearchQuery] = useState("");
     const [favorites, setFavorites] = useState([]);
     const [removingFav, setRemovingFav] = useState(null);
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
 
     const handleFavoritesClick = async (event) => {
         setFavoritesAnchorEl(event.currentTarget);
@@ -94,12 +98,28 @@ function TopAppBar({ darkMode, setDarkMode, categories, onFilterChange, onSearch
                         <FontAwesomeIcon icon={faBars} className="icon" />
                     </IconButton>
                 </Tooltip>
-                <Typography variant="h6" style={{ flexGrow: 1, display: "flex", alignItems: "center" }}>
-                    <a href="/" style={{ display: "flex", alignItems: "center", textDecoration: "none", color: "inherit" }}>
-                        <img src="./data/images/illymakes_logo_200px.png" className="logo" alt="Logo"></img>
+                <Typography
+                    variant="h6"
+                    sx={{
+                        flexGrow: 1,
+                        display: showSearch && isMobile ? 'none' : 'flex',
+                        alignItems: 'center',
+                    }}
+                >
+                    <a
+                        href="/"
+                        style={{
+                            display: "flex",
+                            alignItems: "center",
+                            textDecoration: "none",
+                            color: "inherit",
+                        }}
+                    >
+                        <img src="./data/images/illymakes_logo_200px.png" className="logo" alt="Logo" />
                         AAppsNTools
                     </a>
                 </Typography>
+
                 {showSearch ? (
                     <TextField
                         variant="outlined"
@@ -108,13 +128,20 @@ function TopAppBar({ darkMode, setDarkMode, categories, onFilterChange, onSearch
                         placeholder="Search..."
                         value={searchQuery}
                         onChange={handleSearchChange}
-                        style={{
+                        sx={{
                             flexGrow: 1,
-                            marginRight: 8,
-                            transition: "width 0.5s ease",
+                            ml: showSearch && isMobile ? 0 : 1,
+                            mr: 1,
+                            width: showSearch && isMobile ? '100%' : 'auto',
+                            minWidth: showSearch && isMobile ? 0 : 200,
+
+                            '& .MuiOutlinedInput-root': {
+                                height: 36,
+                            },
                         }}
                     />
                 ) : null}
+
                 <Tooltip title={"Search Cards"}>
                     <IconButton color="inherit" onClick={showSearch ? closeSearchBar : toggleSearchBar}>
                         {showSearch ? <FontAwesomeIcon icon={faTimes} /> : <FontAwesomeIcon icon={faMagnifyingGlass} className="search-icon" />}

@@ -319,11 +319,21 @@ function App() {
             <Container maxWidth="xl">
               <Grid container spacing={2} justifyContent="center">
                 {filteredData.map((data, index) => (
-                  <Grid item key={index} xs={12} sm={6} md={4} lg={3} xl={2.4} sx={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    flexBasis: 'calc(20% - 16px)',
-                  }}>
+                  <Grid
+                    item
+                    key={index}
+                    xs={12}
+                    sm={6}
+                    md={4}
+                    lg={3}
+                    xl={2.4}
+                    sx={{
+                      flexBasis: {
+                        xs: '100%',     // 1 column on phones
+                        sm: '50%',      // 2 columns on small tablets
+                        md: 'calc(20% - 16px)', // EXACTLY what you have now
+                      },
+                    }}>
                     <TileCard
                       darkMode={darkMode}
                       title={data.title}
